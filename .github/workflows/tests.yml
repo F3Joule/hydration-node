@@ -44,8 +44,17 @@ jobs:
           path: target/release/wbuild/hydradx-runtime/hydradx_runtime.compact.compressed.wasm
       - name: Clippy
         run: make clippy-all
-      - name: Test benchmarks
-        run: make test-benchmarks
+
+      - name: Build benchmarking CLI
+        id: build-benchmarks
+        run: make build-benchmarks
+
+      - name: Upload benchmarking CLI
+        uses: actions/upload-artifact@v4
+        if: steps.build-benchmarks.outcome == 'success'
+        with:
+          name: hydradx-bencher
+          path: target/release/hydradx
 
   version-check:
     runs-on: ubuntu-latest

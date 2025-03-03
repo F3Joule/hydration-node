@@ -1,0 +1,53 @@
+name: benchmarking
+on:
+  workflow_dispatch:
+    inputs:
+      workflow_run_id:
+        description: 'Input workflow run id'
+        required: true
+        type: string
+  workflow_run:
+    workflows: ["build-and-deploy"]
+    types:
+      - completed
+
+jobs:
+  execute:
+    concurrency: benchmark-execution
+    runs-on: lark # FIXME: assign a proper runner for benchmark job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+#          ref: '${{ github.event.workflow_run.head_sha }}'
+
+      - name: Download benchmarking CLI
+        uses: actions/download-artifact@v4
+        with:
+          name: hydradx-bencher
+          path: ./bin
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: '${{ github.event.inputs.workflow_run_id }}' #'${{ github.events.workflow_run.id }}'
+
+      - name: Make binary executable
+        run: chmod +x ./bin/hydradx
+
+      - name: Run benchmarks
+        id: execute-benchmarks
+        continue-on-error: true
+        run: ./scripts/benchmarking.sh --all --bin ./bin/hydradx > benchmark_results.log 2>&1
+
+      - name: Upload benchmarking results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: benchmark_results.log
+
+      - name: Upload weights directory
+        if: steps.execute-benchmarks.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-weights
+          path: weights/
+          retention-days: 3  # Optional: Keeps artifacts for 3 days
