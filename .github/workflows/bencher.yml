@@ -22,7 +22,7 @@ jobs:
           name: hydradx-bencher
           path: ./bin
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.events.workflow_run.id }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Make binary executable
         run: chmod +x ./bin/hydradx
@@ -46,9 +46,15 @@ jobs:
           path: weights/
           retention-days: 3  # Optional: Keeps artifacts for 3 days
 
+      - name: Get PR number from workflow_run event
+        id: get-pr-number
+        run: echo "PR_NUMBER=$(jq -r '.pull_requests[0].number' $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+
       - name: Sticky Pull Request Comment
+        #if: ${{ steps.get-pr-number.outputs.PR_NUMBER }}
         uses: marocchino/sticky-pull-request-comment@v2.1.0
         with:
+          number: ${{ steps.get-pr-number.outputs.PR_NUMBER }}
           message: |
             Benchmarks at commit ${{ github.event.workflow_run.head_sha }} have been executed successfully.
             [View results](${{ steps.bencher-artifacts.outputs.artifact-url }})
