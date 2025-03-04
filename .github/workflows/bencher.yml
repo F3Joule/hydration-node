@@ -1,0 +1,65 @@
+name: benchmarking
+on:
+  workflow_dispatch: 
+  workflow_run:
+    workflows: [ "build-and-deploy" ]
+    types:
+      - completed
+
+jobs:
+  execute-all:
+    concurrency: benchmark-execution
+    runs-on: toad # FIXME: assign a proper runner for benchmark job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Download benchmarking CLI
+        uses: actions/download-artifact@v4
+        with:
+          name: hydradx-bencher
+          path: ./bin
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Make binary executable
+        run: chmod +x ./bin/hydradx
+
+      - name: Run benchmarks
+        id: execute-benchmarks
+        run: ./scripts/benchmarking.sh --all --bin ./bin/hydradx 2>&1 | tee benchmark_results.log
+
+      - name: Upload benchmarking results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: benchmark_results.log
+          retention-days: 3  # Optional: Keeps artifacts for 3 days
+
+      - name: Upload weights directory
+        id: bencher-artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-weights
+          path: weights/
+          retention-days: 3  # Optional: Keeps artifacts for 3 days
+
+      - name: Extract PR Number
+        id: extract_pr
+        run: |
+          PR_NUMBER=$(echo '${{ toJson(github.event.workflow_run) }}' | jq -r '.pull_requests[0].number // empty')
+          if [ -n "$PR_NUMBER" ]; then
+            echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sticky Pull Request Comment
+        if: steps.extract_pr.outputs.pr_number
+        uses: marocchino/sticky-pull-request-comment@v2.1.0
+        with:
+          number: ${{ steps.extract_pr.outputs.pr_number }}
+          message: |
+            Benchmarks at commit ${{ github.event.workflow_run.head_sha }} have been executed successfully.
+            [View results](${{ steps.bencher-artifacts.outputs.artifact-url }})

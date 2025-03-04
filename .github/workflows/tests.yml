@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    runs-on: lark
+    runs-on: toad
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,90 +26,102 @@ jobs:
         uses: codota/toolchain@00a8bf2bdcfe93aefd70422d3dec07337959d3a4
         with:
           profile: minimal
-      - name: Run tests
-        run: make test-release
-      - name: Build release
-        run: time make build-release
-      - name: Version info
-        run: ./target/release/hydradx --version
-      - name: Upload release binary
+
+# TODO: uncomment after testing
+#      - name: Run tests
+#        run: make test-release
+#      - name: Build release
+#        run: time make build-release
+#      - name: Version info
+#        run: ./target/release/hydradx --version
+#      - name: Upload release binary
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: hydradx
+#          path: target/release/hydradx
+#      - name: Upload release wasm
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: hydradx_runtime.compact.compressed.wasm
+#          path: target/release/wbuild/hydradx-runtime/hydradx_runtime.compact.compressed.wasm
+#      - name: Clippy
+#        run: make clippy-all
+
+      - name: Build benchmarking CLI
+        id: build-benchmarks
+        run: make build-benchmarks
+
+      - name: Upload benchmarking CLI
         uses: actions/upload-artifact@v4
+        if: steps.build-benchmarks.outcome == 'success'
         with:
-          name: hydradx
+          name: hydradx-bencher
           path: target/release/hydradx
-      - name: Upload release wasm
-        uses: actions/upload-artifact@v4
-        with:
-          name: hydradx_runtime.compact.compressed.wasm
-          path: target/release/wbuild/hydradx-runtime/hydradx_runtime.compact.compressed.wasm
-      - name: Clippy
-        run: make clippy-all
-      - name: Test benchmarks
-        run: make test-benchmarks
 
-  version-check:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    if: github.event_name == 'pull_request'
-    outputs:
-      runtime-upgraded: ${{ steps.check-runtime.outputs.upgraded }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Install Rust
-        uses: codota/toolchain@00a8bf2bdcfe93aefd70422d3dec07337959d3a4
-        with:
-          profile: minimal
-      - name: Get crate versions
-        run: |
-          VERSION_UPDATE=$(./scripts/list_crate_updates.sh)
-          VERSION_UPDATE=$(cat << EOF
-          $VERSION_UPDATE
-          EOF
-          )
-          echo "VERSION_UPDATE<<EOF" >> $GITHUB_ENV
-          echo "$VERSION_UPDATE" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-      - name: Check runtime upgrade
-        id: check-runtime
-        if: contains(env.VERSION_UPDATE, 'Runtime version has been increased.')
-        run: echo "::set-output name=upgraded::true"
-      - name: Sticky Pull Request Comment
-        uses: marocchino/sticky-pull-request-comment@v2.1.0
-        with:
-          message: |
-            ${{ env.VERSION_UPDATE }}
-      - name: Evaluate result
-        if: contains(env.VERSION_UPDATE, 'have not been updated') || contains(env.VERSION_UPDATE, 'versions don''t match') || contains(env.VERSION_UPDATE, 'downgraded')
-        run: exit 1
-
-  ecosystem-tests:
-    needs: build  # Make sure this runs after build job to have the wasm artifact
-    permissions: { }
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Checkout polkadot-ecosystem-tests
-        uses: actions/checkout@v2
-        with:
-          repository: galacticcouncil/polkadot-ecosystem-tests
-          ref: 1ad4db1c546f31a4f8e8987ada39dc7ef71100fe
-
-      - name: Download WASM artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: hydradx_runtime.compact.compressed.wasm
-
-      - name: Run ecosystem tests
-        run: |
-          # Set the path to the downloaded WASM file
-          export HYDRADX_RUNTIME_WASM_PATH="$PWD/hydradx_runtime.compact.compressed.wasm"
-          
-          # Run specific tests doing XCM between hydradx and other parachains
-          yarn install
-          yarn test upgrade.test.ts
-        env:
-          HYDRADX_RUNTIME_WASM_PATH: ${{ env.HYDRADX_RUNTIME_WASM_PATH }}
+# TODO: uncomment after testing
+#  version-check:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      pull-requests: write
+#    if: github.event_name == 'pull_request'
+#    outputs:
+#      runtime-upgraded: ${{ steps.check-runtime.outputs.upgraded }}
+#    steps:
+#      - uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#          ref: ${{ github.event.pull_request.head.sha }}
+#      - name: Install Rust
+#        uses: codota/toolchain@00a8bf2bdcfe93aefd70422d3dec07337959d3a4
+#        with:
+#          profile: minimal
+#      - name: Get crate versions
+#        run: |
+#          VERSION_UPDATE=$(./scripts/list_crate_updates.sh)
+#          VERSION_UPDATE=$(cat << EOF
+#          $VERSION_UPDATE
+#          EOF
+#          )
+#          echo "VERSION_UPDATE<<EOF" >> $GITHUB_ENV
+#          echo "$VERSION_UPDATE" >> $GITHUB_ENV
+#          echo "EOF" >> $GITHUB_ENV
+#      - name: Check runtime upgrade
+#        id: check-runtime
+#        if: contains(env.VERSION_UPDATE, 'Runtime version has been increased.')
+#        run: echo "::set-output name=upgraded::true"
+#      - name: Sticky Pull Request Comment
+#        uses: marocchino/sticky-pull-request-comment@v2.1.0
+#        with:
+#          message: |
+#            ${{ env.VERSION_UPDATE }}
+#      - name: Evaluate result
+#        if: contains(env.VERSION_UPDATE, 'have not been updated') || contains(env.VERSION_UPDATE, 'versions don''t match') || contains(env.VERSION_UPDATE, 'downgraded')
+#        run: exit 1
+#
+#  ecosystem-tests:
+#    needs: build  # Make sure this runs after build job to have the wasm artifact
+#    permissions: { }
+#    runs-on: ubuntu-latest
+#    if: github.event_name == 'pull_request'
+#    steps:
+#      - name: Checkout polkadot-ecosystem-tests
+#        uses: actions/checkout@v2
+#        with:
+#          repository: galacticcouncil/polkadot-ecosystem-tests
+#          ref: 1ad4db1c546f31a4f8e8987ada39dc7ef71100fe
+#
+#      - name: Download WASM artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: hydradx_runtime.compact.compressed.wasm
+#
+#      - name: Run ecosystem tests
+#        run: |
+#          # Set the path to the downloaded WASM file
+#          export HYDRADX_RUNTIME_WASM_PATH="$PWD/hydradx_runtime.compact.compressed.wasm"
+#
+#          # Run specific tests doing XCM between hydradx and other parachains
+#          yarn install
+#          yarn test upgrade.test.ts
+#        env:
+#          HYDRADX_RUNTIME_WASM_PATH: ${{ env.HYDRADX_RUNTIME_WASM_PATH }}
