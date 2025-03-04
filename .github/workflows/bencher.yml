@@ -31,6 +31,7 @@ jobs:
         id: execute-benchmarks
         run: ./scripts/benchmarking.sh --all --bin ./bin/hydradx 2>&1 | tee benchmark_results.log
 
+
       - name: Upload benchmarking results
         uses: actions/upload-artifact@v4
         with:
