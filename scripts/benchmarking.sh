@@ -13,15 +13,9 @@ BINARY="./target/release/hydradx"
 STEPS=50
 REPEAT=20
 
-if [[ ! -f "${BINARY}" ]]; then
-    echo "binary '${BINARY}' does not exist."
-    echo "ensure that the hydradx binary is compiled with '--features=runtime-benchmarks' and in release mode."
-    exit 1
-fi
-
 function help {
     echo "USAGE:"
-    echo "  ${0} [<pallet> <benchmark>] [--check]"
+    echo "  ${0} [<pallet> <benchmark>] [--check] [--all] [--bin <path>]"
     echo ""
     echo "EXAMPLES:"
     echo "  ${0}                       " "list all benchmarks and provide a selection to choose from"
@@ -30,6 +24,7 @@ function help {
     echo "  ${0} foo bar --check       " "run a benchmark for pallet 'foo' and benchmark 'bar' in 'check' mode (reduced steps and repetitions)"
     echo "  ${0} --all         " "run a benchmark for all pallets"
     echo "  ${0} --all --check " "run a benchmark for all pallets in 'check' mode (reduced steps and repetitions)"
+    echo "  ${0} --bin <path>  " "specify a path to the benchmark cli binary"
 }
 
 function choose_and_bench {
@@ -49,6 +44,12 @@ function choose_and_bench {
 }
 
 function bench {
+    if [[ ! -f "${BINARY}" ]]; then
+        echo "binary '${BINARY}' does not exist."
+        echo "ensure that the hydradx binary is compiled with '--features=runtime-benchmarks' and in release mode."
+        exit 1
+    fi
+
     OUTPUT=${4:-weights.rs}
     echo "benchmarking '${1}::${2}' --check=${3}, writing results to '${OUTPUT}'"
 
@@ -69,26 +70,37 @@ function bench {
         --output "${OUTPUT}"
 }
 
-if [[ "${@}" =~ "--help" ]]; then
-    help
+CHECK=0
+ALL=0
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --bin)
+            shift
+            BINARY="$1"
+            ;;
+        --check)
+            CHECK=1
+            ;;
+        --all)
+            ALL=1
+            ;;
+        --help)
+            help
+            exit 0
+            ;;
+        *)
+            ARGS+=("$1")
+            ;;
+    esac
+    shift
+done
+
+if [[ "${ALL}" -eq 1 ]]; then
+    mkdir -p weights/
+    bench '*' '*' "${CHECK}" "weights/"
+elif [[ ${#ARGS[@]} -ne 2 ]]; then
+    choose_and_bench "${CHECK}"
 else
-    CHECK=0
-    if [[ "${@}" =~ "--check" ]]; then
-        CHECK=1
-        set -o noglob && set -- ${@/'--check'} && set +o noglob
-    fi
-
-    ALL=0
-    if [[ "${@}" =~ "--all" ]]; then
-        ALL=1
-    fi
-
-    if [[ "${ALL}" -eq 1 ]]; then
-        mkdir -p weights/
-        bench '*' '*' "${CHECK}" "weights/"
-    elif [[ $# -ne 2 ]]; then
-        choose_and_bench "${CHECK}"
-    else
-        bench "${1}" "${2}" "${CHECK}"
-    fi
+    bench "${ARGS[0]}" "${ARGS[1]}" "${CHECK}"
 fi
