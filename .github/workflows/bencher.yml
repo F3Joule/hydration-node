@@ -1,25 +1,68 @@
 name: benchmarking
 on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request Number'
+        required: true
   workflow_run:
     workflows: [ "build-and-deploy" ]
     types:
       - completed
 
 jobs:
-  execute-check:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      pr_number: ${{ steps.get-pr-number.outputs.pr_number }}
+      benchmark_type: ${{ steps.set-benchmark-type.outputs.benchmark_type }}
+      commit_sha: ${{ steps.get-commit-sha.outputs.commit_sha }}
+    steps:
+      - name: Set benchmark type
+        id: set-benchmark-type
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "benchmark_type=full" >> $GITHUB_OUTPUT
+          else
+            echo "benchmark_type=quick" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get PR number
+        id: get-pr-number
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "pr_number=${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+            PR_NUMBER=$(echo '${{ toJson(github.event.workflow_run) }}' | grep -o '"pull_requests":[^]]*' | grep -o '"number":[0-9]*' | head -n1 | sed 's/[^0-9]//g')
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get commit SHA
+        id: get-commit-sha
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "commit_sha=${{ github.sha }}" >> $GITHUB_OUTPUT
+          else
+            echo "commit_sha=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_OUTPUT
+          fi
+
+  execute-benchmark:
+    needs: setup
     if: |
-      github.event_name == 'workflow_run' &&
-      github.event.workflow_run.pull_requests != '' &&
-      github.event.workflow_run.conclusion == 'success'
+      (github.event_name == 'workflow_dispatch') || 
+      (github.event_name == 'workflow_run' && 
+       github.event.workflow_run.conclusion == 'success' && 
+       needs.setup.outputs.pr_number != '')
 
     concurrency: benchmark-execution
-    runs-on: toad # FIXME: assign a proper runner for benchmark job
+    runs-on: toad # FIXME: Change to a correct runner label
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ needs.setup.outputs.commit_sha }}
 
       - name: Download benchmarking CLI
         uses: actions/download-artifact@v4
@@ -27,7 +70,7 @@ jobs:
           name: hydradx-bencher
           path: ./bin
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || null }}
 
       - name: Make binary executable
         run: chmod +x ./bin/hydradx
@@ -41,36 +84,33 @@ jobs:
 
       - name: Run benchmarks
         id: execute-benchmarks
-        run: ./scripts/benchmarking.sh --all --check --bin ./bin/hydradx 2>&1 | tee benchmark_results.log
+        run: |
+          BENCHMARK_FLAGS="--all --bin ./bin/hydradx"
+          if [[ "${{ needs.setup.outputs.benchmark_type }}" == "quick" ]]; then
+            BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
+          fi
+          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1 | tee benchmark_results.log
 
       - name: Upload benchmarking results
         uses: actions/upload-artifact@v4
         with:
-          name: benchmark-results
+          name: benchmark-results-${{ needs.setup.outputs.benchmark_type }}
           path: benchmark_results.log
-          retention-days: 3  # Optional: Keeps artifacts for 3 days
+          retention-days: 3
 
       - name: Upload weights directory
         id: bencher-artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: benchmark-weights
+          name: benchmark-weights-${{ needs.setup.outputs.benchmark_type }}
           path: weights/
-          retention-days: 3  # Optional: Keeps artifacts for 3 days
-
-      - name: Extract PR Number
-        id: extract_pr
-        run: |
-          PR_NUMBER=$(echo '${{ toJson(github.event.workflow_run) }}' | grep -o '"pull_requests":[^]]*' | grep -o '"number":[0-9]*' | head -n1 | sed 's/[^0-9]//g')
-          if [ -n "$PR_NUMBER" ]; then
-            echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          fi
+          retention-days: 3
 
       - name: Sticky Pull Request Comment
-        if: steps.extract_pr.outputs.pr_number
+        if: needs.setup.outputs.pr_number != ''
         uses: marocchino/sticky-pull-request-comment@v2.1.0
         with:
-          number: ${{ steps.extract_pr.outputs.pr_number }}
+          number: ${{ needs.setup.outputs.pr_number }}
           message: |
-            Benchmarks at commit ${{ github.event.workflow_run.head_sha }} have been executed successfully.
+            ${{ needs.setup.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ needs.setup.outputs.commit_sha }} has been executed successfully.
             [View results](${{ steps.bencher-artifacts.outputs.artifact-url }})
