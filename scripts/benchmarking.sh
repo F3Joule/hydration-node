@@ -10,6 +10,7 @@
 set -e
 
 BINARY="./target/release/hydradx"
+OUTPUT="runtime/hydradx/src/weights/"
 STEPS=50
 REPEAT=20
 
@@ -22,8 +23,8 @@ function help {
     echo "  ${0} --check               " "list all benchmarks and provide a selection to choose from, runs in 'check' mode (reduced steps and repetitions)"
     echo "  ${0} foo bar               " "run a benchmark for pallet 'foo' and benchmark 'bar'"
     echo "  ${0} foo bar --check       " "run a benchmark for pallet 'foo' and benchmark 'bar' in 'check' mode (reduced steps and repetitions)"
-    echo "  ${0} --all         " "run a benchmark for all pallets"
-    echo "  ${0} --all --check " "run a benchmark for all pallets in 'check' mode (reduced steps and repetitions)"
+    echo "  ${0} --all         " "run a benchmark for all pallets (EXCEPT xcm)"
+    echo "  ${0} --all --check " "run a benchmark for all pallets (EXCEPT xcm) in 'check' mode (reduced steps and repetitions)"
     echo "  ${0} --bin <path>  " "specify a path to the benchmark cli binary"
 }
 
@@ -50,8 +51,8 @@ function bench {
         exit 1
     fi
 
-    OUTPUT=${4:-weights.rs}
-    echo "benchmarking '${1}::${2}' --check=${3}, writing results to '${OUTPUT}'"
+    local output_file=${4:-weights.rs}
+    echo "benchmarking '${1}::${2}' --check=${3}, writing results to '${output_file}'"
 
     # Check enabled
     if [[ "${3}" -eq 1 ]]; then
@@ -67,7 +68,7 @@ function bench {
         --steps "${STEPS}" \
         --repeat "${REPEAT}" \
         --template=scripts/pallet-weight-template.hbs \
-        --output "${OUTPUT}"
+        --output "${output_file}"
 }
 
 CHECK=0
@@ -97,8 +98,31 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ "${ALL}" -eq 1 ]]; then
-    mkdir -p weights/
-    bench '*' '*' "${CHECK}" "weights/"
+    mkdir -p "$OUTPUT"
+    # FIXME: This is a temporary solution to filter out XCM pallets
+    XCM_FILTER=("pallet_xcm_benchmarks::fungible" "pallet_xcm_benchmarks::generic")
+
+    while read benchmark; do
+      # Skip benchmarks that match items in XCM_FILTER
+      skip=0
+      for xcm_item in "${XCM_FILTER[@]}"; do
+        if [[ "$benchmark" == *"$xcm_item"* ]]; then
+          skip=1
+          break
+        fi
+      done
+
+      if [[ $skip -eq 0 ]]; then
+        options+=("$benchmark")
+      fi
+    done < <(${BINARY} benchmark pallet --list=pallets | sed 1d)
+
+    for option in "${options[@]}"; do
+      _path="${OUTPUT}${option}.rs"
+
+      touch "${_path}" # TODO: Remove this once benchmarking-cli doesn't fail on missing files
+      bench "${option}" '*' "${CHECK}" "${_path}"
+    done
 elif [[ ${#ARGS[@]} -ne 2 ]]; then
     choose_and_bench "${CHECK}"
 else
