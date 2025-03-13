@@ -51,31 +51,36 @@ jobs:
           fetch-depth: 0
           ref: ${{ steps.setup.outputs.commit_sha }}
 
-      - name: Download benchmarking CLI
-        uses: actions/download-artifact@v4
-        with:
-          name: hydradx-bencher
-          path: ./bin
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ steps.setup.outputs.run_id }}
+# todo: rollback
+#      - name: Download benchmarking CLI
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: hydradx-bencher
+#          path: ./bin
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          run-id: ${{ steps.setup.outputs.run_id }}
+#
+#      - name: Make binary executable
+#        run: chmod +x ./bin/hydradx
+#
+#      - name: Run benchmarks
+#        run: |
+#          BENCHMARK_FLAGS="--all --bin ./bin/hydradx"
+#          if [[ "${{ steps.setup.outputs.benchmark_type }}" == "quick" ]]; then
+#            BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
+#          fi
+#          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1 | tee benchmark_results.log
+#
+#      - name: Upload benchmarking logs
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: benchmark-logs
+#          path: benchmark.log
+#          retention-days: 3
 
-      - name: Make binary executable
-        run: chmod +x ./bin/hydradx
-
-      - name: Run benchmarks
-        run: |
-          BENCHMARK_FLAGS="--all --bin ./bin/hydradx"
-          if [[ "${{ steps.setup.outputs.benchmark_type }}" == "quick" ]]; then
-            BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
-          fi
-          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1 | tee benchmark_results.log
-
-      - name: Upload benchmarking logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: benchmark-logs
-          path: benchmark.log
-          retention-days: 3
+      # todo:
+      - name: Test
+        run: rm -f runtime/hydradx/src/weights/frame_system.rs
 
       - name: Upload weights directory
         id: bencher-weights
@@ -83,15 +88,16 @@ jobs:
         with:
           name: ${{ steps.setup.outputs.benchmark_type }}-benchmark-weights
           path: runtime/hydradx/src/weights/
-          retention-days: 3
+          retention-days: 1 # todo: rollback
 
-      - name: Sticky Pull Request Comment
-        if: steps.setup.outputs.pr_number
-        uses: marocchino/sticky-pull-request-comment@v2.1.0
-        with:
-          header: 'benchmarking'
-          recreate: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
-          number: ${{ steps.setup.outputs.pr_number }}
-          message: |
-            ${{ steps.setup.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ steps.setup.outputs.commit_sha }} has been executed successfully.
-            [View results](${{ steps.bencher-weights.outputs.artifact-url }})
+# todo: rollback
+#      - name: Sticky Pull Request Comment
+#        if: steps.setup.outputs.pr_number
+#        uses: marocchino/sticky-pull-request-comment@v2.1.0
+#        with:
+#          header: 'benchmarking'
+#          recreate: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
+#          number: ${{ steps.setup.outputs.pr_number }}
+#          message: |
+#            ${{ steps.setup.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ steps.setup.outputs.commit_sha }} has been executed successfully.
+#            [View results](${{ steps.bencher-weights.outputs.artifact-url }})
