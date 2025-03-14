@@ -48,6 +48,7 @@ jobs:
 #        run: make test-benchmarks
 
       - name: Build benchmarks CLI
+        continue-on-error: true
         id: build-benchmarks
         run: make build-benchmarks
 
@@ -57,6 +58,43 @@ jobs:
         with:
           name: hydradx-bencher
           path: target/release/hydradx
+
+      - name: Update benchmark status check on a PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'benchmarking',
+              head_sha: context.payload.pull_request.head.sha,
+              status: 'in_progress',
+              output: {
+                title: 'Benchmarking',
+                summary: 'Waiting for benchmark to complete'
+              }
+            });
+
+  benchmark-status:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Create pending status check on a PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'benchmarking',
+              head_sha: context.payload.pull_request.head.sha,
+              status: 'queued',
+              output: {
+                title: 'Benchmarking',
+                summary: 'Waiting for build to complete before benchmarking'
+              }
+            });
 
 #  version-check:
 #    runs-on: ubuntu-latest
