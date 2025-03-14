@@ -69,14 +69,7 @@ jobs:
           if [[ "${{ steps.setup.outputs.benchmark_type }}" == "quick" ]]; then
             BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
           fi
-          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1 | tee benchmark.log
-
-      - name: Upload benchmarking logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: benchmark-logs
-          path: benchmark.log
-          retention-days: 3
+          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1
 
       - name: Upload weights directory
         id: bencher-weights
@@ -96,3 +89,33 @@ jobs:
           message: |
             ${{ steps.setup.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ steps.setup.outputs.commit_sha }} has been executed successfully.
             [View results](${{ steps.bencher-weights.outputs.artifact-url }})
+
+  status-check:
+    needs: execute
+    runs-on: ubuntu-latest
+    if: needs.execute.result == 'success'
+    steps:
+      - name: Create pending status check
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: '${{ steps.setup.outputs.commit_sha }}',
+              check_name: 'benchmarking'
+            });
+            
+            if (checks.check_runs.length > 0) {
+              await github.rest.checks.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                check_run_id: checks.check_runs[0].id,
+                status: 'completed',
+                conclusion: 'success',
+                output: {
+                  title: 'Benchmarking completed',
+                  summary: 'Benchmarks run finished successfully'
+                }
+              });
+            }
