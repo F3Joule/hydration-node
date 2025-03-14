@@ -53,10 +53,31 @@ jobs:
 
       - name: Upload benchmarks CLI
         uses: actions/upload-artifact@v4
-        if: steps.build-benchmarks.outcome == 'success'
         with:
           name: hydradx-bencher
           path: target/release/hydradx
+
+  benchmark-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      checks: write
+    steps:
+      - name: Create pending status check on a PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'benchmarking: status',
+              head_sha: context.payload.pull_request.head.sha,
+              status: 'queued',
+              output: {
+                title: 'Benchmarking queued',
+                summary: 'Waiting for build to complete before benchmarking'
+              }
+            });
 
 #  version-check:
 #    runs-on: ubuntu-latest
