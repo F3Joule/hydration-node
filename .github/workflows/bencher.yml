@@ -9,6 +9,7 @@ on:
     workflows: [ "build-and-deploy" ]
     types: [ completed ]
 
+
 jobs:
   prepare:
     runs-on: ubuntu-latest
