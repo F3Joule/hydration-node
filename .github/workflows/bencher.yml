@@ -10,18 +10,14 @@ on:
     types: [ completed ]
 
 jobs:
-  execute:
-    if: |
-      github.event_name == 'workflow_dispatch' || 
-      (
-        github.event_name == 'workflow_run' && 
-        github.event.workflow_run.conclusion == 'success' && 
-        github.event.workflow_run.pull_requests[0]
-      )
-
-    concurrency: benchmark-execution
-    runs-on: toad # FIXME: change to proper runner name
-
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      benchmark_type: ${{ steps.setup.outputs.benchmark_type }}
+      pr_number: ${{ steps.setup.outputs.pr_number }}
+      commit_sha: ${{ steps.setup.outputs.commit_sha }}
+      run_id: ${{ steps.setup.outputs.run_id }}
+      check_data: ${{ steps.benchmark-check.outputs.check_data }}
     steps:
       - name: Determine benchmark type and PR number
         id: setup
@@ -29,7 +25,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "benchmark_type=full" >> $GITHUB_OUTPUT
             echo "pr_number=${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
-          
+
             run_id=$(curl -s \
               -H "Accept: application/vnd.github+json" \
                 "https://api.github.com/repos/${{ github.repository }}/actions/runs?event=pull_request&status=success&per_page=100" | \
@@ -37,7 +33,7 @@ jobs:
               grep '"id":' | \
               sed 's/[^0-9]*//g' | \
                 head -n 1)
-          
+
             echo "run_id=$run_id" >> $GITHUB_OUTPUT
           else
             echo "benchmark_type=quick" >> $GITHUB_OUTPUT
@@ -46,11 +42,41 @@ jobs:
           fi
           echo "commit_sha=${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}" >> $GITHUB_OUTPUT
 
+      - name: Get benchmark check data
+        id: benchmark-check
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: '${{ steps.setup.outputs.commit_sha }}',
+              check_name: 'benchmark-status'
+            });
+            
+            core.setOutput('checks_data', JSON.stringify(data));
+
+  execute:
+    needs: prepare
+    runs-on: toad # FIXME: change to proper runner name
+    concurrency: benchmark-execution
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'workflow_run' &&
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.pull_requests[0]
+      )
+
+    permissions:
+      pull-requests: write
+
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ steps.setup.outputs.commit_sha }}
+          ref: ${{ needs.prepare.outputs.commit_sha }}
 
       - name: Download benchmarks CLI
         uses: actions/download-artifact@v4
@@ -58,7 +84,7 @@ jobs:
           name: hydradx-bencher
           path: ./bin
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ steps.setup.outputs.run_id }}
+          run-id: ${{ needs.prepare.outputs.run_id }}
 
       - name: Make binary executable
         run: chmod +x ./bin/hydradx
@@ -66,33 +92,76 @@ jobs:
       - name: Run benchmarks
         run: |
           BENCHMARK_FLAGS="--all --bin ./bin/hydradx"
-          if [[ "${{ steps.setup.outputs.benchmark_type }}" == "quick" ]]; then
+          if [[ "${{ needs.prepare.outputs.benchmark_type }}" == "quick" ]]; then
             BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
           fi
-          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1 | tee benchmark.log
-
-      - name: Upload benchmarking logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: benchmark-logs
-          path: benchmark.log
-          retention-days: 3
+          ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1
 
       - name: Upload weights directory
         id: bencher-weights
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.setup.outputs.benchmark_type }}-benchmark-weights
+          name: ${{ needs.prepare.outputs.benchmark_type }}-benchmark-weights
           path: runtime/hydradx/src/weights/
           retention-days: 3
 
       - name: Sticky Pull Request Comment
-        if: steps.setup.outputs.pr_number
+        if: needs.prepare.outputs.pr_number
         uses: marocchino/sticky-pull-request-comment@v2.1.0
         with:
-          header: 'benchmark-${{ steps.setup.outputs.benchmark_type }}'
+          header: 'benchmark-${{ needs.prepare.outputs.benchmark_type }}'
           recreate: true
-          number: ${{ steps.setup.outputs.pr_number }}
+          number: ${{ needs.prepare.outputs.pr_number }}
           message: |
-            ${{ steps.setup.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ steps.setup.outputs.commit_sha }} has been executed successfully.
+            ${{ needs.prepare.outputs.benchmark_type == 'full' && 'Full' || 'Quick' }} benchmark at commit ${{ needs.prepare.outputs.commit_sha }} has been executed successfully.
             [View results](${{ steps.bencher-weights.outputs.artifact-url }})
+
+  update-benchmark-check:
+    needs: prepare
+    runs-on: ubuntu-latest
+    if: needs.prepare.outputs.checks_data != ''
+    permissions:
+      checks: write
+    steps:
+      - name: Update benchmark status check on a PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const checks = JSON.parse('${{ needs.prepare.outputs.checks_data }}');
+
+            await github.rest.checks.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              check_run_id: checks.check_runs.pop().id,
+              status: 'completed',
+              conclusion: '${{ needs.execute.result }}',
+              output: {
+                title: 'Benchmarking completed',
+                summary: 'Benchmarks run finished with ${{ needs.execute.result }}'
+              }
+            });
+
+  complete-benchmark-check:
+    needs: [ prepare, execute ]
+    runs-on: ubuntu-latest
+    if: needs.prepare.outputs.checks_data != ''
+    permissions:
+      checks: write
+    steps:
+      - name: Mark benchmarking check as completed
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const checks = JSON.parse('${{ needs.prepare.outputs.checks_data }}');
+
+            await github.rest.checks.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              check_run_id: checks.check_runs.pop().id,
+              status: 'completed',
+              conclusion: '${{ needs.execute.result }}',
+              output: {
+                title: 'Benchmarking completed',
+                summary: 'Benchmarks run finished with ${{ needs.execute.result }}'
+              }
+            });
