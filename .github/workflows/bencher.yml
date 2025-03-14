@@ -22,6 +22,9 @@ jobs:
     concurrency: benchmark-execution
     runs-on: toad # FIXME: change to proper runner name
 
+    outputs:
+      commit_sha: ${{ steps.setup.outputs.commit_sha }}
+
     steps:
       - name: Determine benchmark type and PR number
         id: setup
@@ -93,16 +96,18 @@ jobs:
   status-check:
     needs: execute
     runs-on: ubuntu-latest
-    if: needs.execute.result == 'success'
+    if: needs.execute.outputs.commit_sha
+    permissions:
+      checks: write
     steps:
-      - name: Create pending status check
+      - name: Mark benchmarking check as completed
         uses: actions/github-script@v6
         with:
-          script: |
+          script: |            
             const { data: checks } = await github.rest.checks.listForRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: '${{ steps.setup.outputs.commit_sha }}',
+              ref: '${{ needs.execute.outputs.commit_sha }}',
               check_name: 'benchmarking'
             });
             
@@ -112,10 +117,10 @@ jobs:
                 repo: context.repo.repo,
                 check_run_id: checks.check_runs[0].id,
                 status: 'completed',
-                conclusion: 'success',
+                conclusion: '${{ needs.execute.result }}',
                 output: {
                   title: 'Benchmarking completed',
-                  summary: 'Benchmarks run finished successfully'
+                  summary: 'Benchmarks run finished with ${{ needs.execute.result }}'
                 }
               });
             }
