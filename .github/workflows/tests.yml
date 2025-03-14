@@ -11,6 +11,9 @@ on:
 env:
   RELAY_CHAIN_VERSION: v0.9.28
 
+permissions:
+  checks: write
+
 jobs:
   build:
     runs-on: toad

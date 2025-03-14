@@ -5,6 +5,10 @@ on:
       pr_number:
         description: 'Pull Request Number'
         required: true
+
+  pull_request:
+    types:
+      - closed
   workflow_run:
     workflows: [ "build-and-deploy" ]
     types: [ completed ]
@@ -21,6 +25,9 @@ jobs:
 
     concurrency: benchmark-execution
     runs-on: toad # FIXME: change to proper runner name
+
+    outputs:
+      commit_sha: ${{ steps.setup.outputs.commit_sha }}
 
     steps:
       - name: Determine benchmark type and PR number
@@ -93,16 +100,26 @@ jobs:
   status-check:
     needs: execute
     runs-on: ubuntu-latest
-    if: needs.execute.result == 'success'
+    if: |
+      (needs.execute.outputs.commit_sha && needs.execute.result != 'skipped') ||
+      github.event_name == 'pull_request'
     steps:
-      - name: Create pending status check
+      - name: Mark benchmark status check as completed
         uses: actions/github-script@v6
         with:
-          script: |
+          script: |            
+            const commit_sha = ${{ github.event_name }} === "pull_request" 
+              ? github.event.pull_request.head.sha
+              : needs.execute.outputs.commit_sha }};
+  
+            const conclusion = ${{ github.event_name }} === "pull_request" 
+              ? (github.event.pull_request.merged ? "success" : "cancelled")
+              : needs.execute.result;
+  
             const { data: checks } = await github.rest.checks.listForRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: '${{ steps.setup.outputs.commit_sha }}',
+              ref: commit_sha,
               check_name: 'benchmarking'
             });
             
@@ -110,12 +127,12 @@ jobs:
               await github.rest.checks.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                check_run_id: checks.check_runs[0].id,
+                check_run_id: checks.check_runs.pop().id,
                 status: 'completed',
-                conclusion: 'success',
+                conclusion: conclusion,
                 output: {
                   title: 'Benchmarking completed',
-                  summary: 'Benchmarks run finished successfully'
+                  summary: 'Benchmarks run finished with ' + conclusion
                 }
               });
             }
