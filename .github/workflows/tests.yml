@@ -55,6 +55,7 @@ jobs:
           name: hydradx-bencher
           path: target/release/hydradx
 
+
   benchmark-check:
     runs-on: toad
     concurrency: benchmark-execution
