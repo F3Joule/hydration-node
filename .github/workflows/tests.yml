@@ -128,9 +128,15 @@ jobs:
             exit 0
           fi
           
-          # Commit and push changes directly to the branch that triggered the workflow
-          git commit -m "update pallets weights"
-          git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          # Commit changes
+          git commit -m "Update benchmark weights"
+          
+          # Set up authentication and push
+          # Create the authenticated URL with the token
+          repo_url="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          
+          # Push to the branch that triggered the workflow
+          git push "${repo_url}" HEAD:${{ github.head_ref || github.ref_name }}
           
           echo "Successfully pushed benchmark results to branch ${{ github.head_ref || github.ref_name }}"
 
