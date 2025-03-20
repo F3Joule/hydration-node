@@ -63,6 +63,7 @@ jobs:
     permissions:
       pull-requests: write
       actions: read
+      contents: write
     steps:
       - name: Prepare benchmark execution
         id: prepare
