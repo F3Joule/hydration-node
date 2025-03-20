@@ -20,12 +20,12 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - run: git describe --tags --abbrev=0
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.12
-      - name: Install Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-        with:
-          rustflags: ''
+#      - name: Setup cmake
+#        uses: jwlawson/actions-setup-cmake@v1.12
+#      - name: Install Rust
+#        uses: actions-rust-lang/setup-rust-toolchain@v1
+#        with:
+#          rustflags: ''
 #      - name: Run tests
 #        run: make test-release
 #      - name: Build release
@@ -45,15 +45,16 @@ jobs:
 #      - name: Clippy
 #        run: make clippy-all
 
-      - name: Build benchmarks CLI
-        id: build-benchmarks
-        run: make build-benchmarks
+#      - name: Build benchmarks CLI
+#        id: build-benchmarks
+#        run: make build-benchmarks
 
+      - run: unzip bin/hydradx-bencher.zip -d bin
       - name: Upload benchmarks CLI
         uses: actions/upload-artifact@v4
         with:
           name: hydradx-bencher
-          path: target/release/hydradx
+          path: bin/hydradx
 
   benchmark-check:
     runs-on: toad
@@ -100,10 +101,10 @@ jobs:
 
       - name: Run ${{ steps.prepare.outputs.benchmark_type }} benchmarks
         run: |
-          BENCHMARK_FLAGS="--all --bin ./bin/hydradx"
-          if [[ "${{ steps.prepare.outputs.benchmark_type }}" == "quick" ]]; then
-            BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
-          fi
+          BENCHMARK_FLAGS="--all --bin ./bin/hydradx --check"
+          #if [[ "${{ steps.prepare.outputs.benchmark_type }}" == "quick" ]]; then
+          #  BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
+          #fi
           ./scripts/benchmarking.sh $BENCHMARK_FLAGS 2>&1
 
       - name: Upload weights directory
