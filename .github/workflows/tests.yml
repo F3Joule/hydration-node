@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    runs-on: lark
+    runs-on: toad
     steps:
       - uses: actions/checkout@v2
         with:
@@ -54,6 +54,7 @@ jobs:
         with:
           name: hydradx-bencher
           path: bin/hydradx.zip
+
 
   benchmark-check:
     runs-on: toad
