@@ -68,6 +68,12 @@ jobs:
       - name: Prepare benchmark execution
         id: prepare
         run: |
+          echo "$(git log -1 --pretty=format:"%s")"
+          if [[ ! -z $(git log -1 --pretty=format:"%s" | grep -q "ignore-benchmark") ]]; then
+            echo "Skipping job due to 'ignore-benchmark' tag in commit message"
+            exit 78  # Exit code 78 marks the job as 'skipped'
+          fi
+          
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
                echo "benchmark_type=full" >> $GITHUB_OUTPUT
           else
@@ -119,8 +125,9 @@ jobs:
       - name: Commit full benchmark results to a pull request
         if: steps.prepare.outputs.benchmark_type == 'full'
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions@users.noreply.github.com"
+          user="${{ github.actor }}"
+          git config --global user.name "$user"
+          git config --global user.email "${user}@users.noreply.github.com"
           
           # Add and check if there are changes
           git add runtime/hydradx/src/weights/
@@ -130,7 +137,7 @@ jobs:
           fi
           
           # Commit changes
-          git commit -m "Update benchmark weights"
+          git commit -m "Update pallets weights [ignore benchmarks]"
           
           # Set up authentication and push
           # Create the authenticated URL with the token
