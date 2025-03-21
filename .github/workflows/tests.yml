@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    runs-on: lark
+    runs-on: toad
     steps:
       - uses: actions/checkout@v2
         with:
