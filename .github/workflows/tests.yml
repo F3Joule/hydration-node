@@ -111,7 +111,7 @@ jobs:
 
       - name: Run ${{ steps.prepare.outputs.benchmark_type }} benchmarks
         run: |
-          BENCHMARK_FLAGS="'pallet_dca' '*' --bin ./bin/hydradx --check"
+          BENCHMARK_FLAGS="pallet_dca * --bin ./bin/hydradx --check"
           #          if [[ "${{ steps.prepare.outputs.benchmark_type }}" == "quick" ]]; then
           #            BENCHMARK_FLAGS="$BENCHMARK_FLAGS --check"
           #          fi
