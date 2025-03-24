@@ -149,17 +149,18 @@ jobs:
 
           # Push to the branch that triggered the workflow
           git push "${repo_url}" HEAD:${{ github.ref_name }}
+          echo "commit_sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
           echo "Successfully pushed benchmark results to branch ${{ github.head_ref || github.ref_name }}"
 
       - name: Trigger tests workflow for weights commit
-        if: steps.commit-weights.outcome == 'success'
+        if: steps.commit-weights.outputs.commit_sha
         run: |
           curl -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
-            -d '{"ref":"${{ github.ref_name }}"}'
+            -d '{"ref":"${{ steps.commit-weights.outputs.commit_sha }}"}'
 
       - name: Comment benchmark results to the pull request
         if: github.event_name == 'pull_request'
