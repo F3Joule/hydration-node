@@ -62,20 +62,20 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 4_917_000 picoseconds.
-		Weight::from_parts(4_917_000, 0)
-			// Standard Error: 4
-			.saturating_add(Weight::from_parts(654, 0).saturating_mul(b.into()))
+		// Minimum execution time: 5_030_000 picoseconds.
+		Weight::from_parts(5_030_000, 0)
+			// Standard Error: 2
+			.saturating_add(Weight::from_parts(649, 0).saturating_mul(b.into()))
 	}
 	/// The range of component `b` is `[0, 3932160]`.
 	fn remark_with_event(b: u32, ) -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 12_506_000 picoseconds.
-		Weight::from_parts(12_506_000, 0)
+		// Minimum execution time: 12_550_000 picoseconds.
+		Weight::from_parts(12_550_000, 0)
 			// Standard Error: 5
-			.saturating_add(Weight::from_parts(1_688, 0).saturating_mul(b.into()))
+			.saturating_add(Weight::from_parts(1_713, 0).saturating_mul(b.into()))
 	}
 	/// Storage: `System::Digest` (r:1 w:1)
 	/// Proof: `System::Digest` (`max_values`: Some(1), `max_size`: None, mode: `Measured`)
@@ -85,8 +85,8 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1485`
-		// Minimum execution time: 9_284_000 picoseconds.
-		Weight::from_parts(9_284_000, 1485)
+		// Minimum execution time: 9_248_000 picoseconds.
+		Weight::from_parts(9_248_000, 1485)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -106,8 +106,8 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `231`
 		//  Estimated: `1716`
-		// Minimum execution time: 120_319_635_000 picoseconds.
-		Weight::from_parts(120_319_635_000, 1716)
+		// Minimum execution time: 120_534_331_000 picoseconds.
+		Weight::from_parts(120_534_331_000, 1716)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -118,10 +118,10 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 5_046_000 picoseconds.
-		Weight::from_parts(5_046_000, 0)
-			// Standard Error: 5_216
-			.saturating_add(Weight::from_parts(749_631, 0).saturating_mul(i.into()))
+		// Minimum execution time: 5_200_000 picoseconds.
+		Weight::from_parts(5_200_000, 0)
+			// Standard Error: 8_662
+			.saturating_add(Weight::from_parts(761_441, 0).saturating_mul(i.into()))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(i.into())))
 	}
 	/// Storage: `Skipped::Metadata` (r:0 w:0)
@@ -131,10 +131,10 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 5_077_000 picoseconds.
-		Weight::from_parts(5_077_000, 0)
-			// Standard Error: 7_228
-			.saturating_add(Weight::from_parts(578_862, 0).saturating_mul(i.into()))
+		// Minimum execution time: 5_185_000 picoseconds.
+		Weight::from_parts(5_185_000, 0)
+			// Standard Error: 4_696
+			.saturating_add(Weight::from_parts(565_109, 0).saturating_mul(i.into()))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(i.into())))
 	}
 	/// Storage: `Skipped::Metadata` (r:0 w:0)
@@ -144,10 +144,10 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `204 + p * (69 ±0)`
 		//  Estimated: `177 + p * (70 ±0)`
-		// Minimum execution time: 8_844_000 picoseconds.
-		Weight::from_parts(8_844_000, 177)
-			// Standard Error: 6_650
-			.saturating_add(Weight::from_parts(1_159_075, 0).saturating_mul(p.into()))
+		// Minimum execution time: 8_384_000 picoseconds.
+		Weight::from_parts(8_384_000, 177)
+			// Standard Error: 5_400
+			.saturating_add(Weight::from_parts(1_155_914, 0).saturating_mul(p.into()))
 			.saturating_add(T::DbWeight::get().reads((1_u64).saturating_mul(p.into())))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(p.into())))
 			.saturating_add(Weight::from_parts(0, 70).saturating_mul(p.into()))
@@ -158,8 +158,8 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 16_937_000 picoseconds.
-		Weight::from_parts(16_937_000, 0)
+		// Minimum execution time: 17_525_000 picoseconds.
+		Weight::from_parts(17_525_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `System::AuthorizedUpgrade` (r:1 w:1)
@@ -180,8 +180,8 @@ impl<T: frame_system::Config> frame_system::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `253`
 		//  Estimated: `1738`
-		// Minimum execution time: 126_220_439_000 picoseconds.
-		Weight::from_parts(126_220_439_000, 1738)
+		// Minimum execution time: 125_884_900_000 picoseconds.
+		Weight::from_parts(125_884_900_000, 1738)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}

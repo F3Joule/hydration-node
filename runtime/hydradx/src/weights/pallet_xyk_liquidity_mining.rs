@@ -87,8 +87,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `3406`
 		//  Estimated: `11402`
-		// Minimum execution time: 337_488_000 picoseconds.
-		Weight::from_parts(337_488_000, 11402)
+		// Minimum execution time: 345_806_000 picoseconds.
+		Weight::from_parts(345_806_000, 11402)
 			.saturating_add(T::DbWeight::get().reads(20_u64))
 			.saturating_add(T::DbWeight::get().writes(12_u64))
 	}
@@ -112,8 +112,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `4654`
 		//  Estimated: `6156`
-		// Minimum execution time: 139_022_000 picoseconds.
-		Weight::from_parts(139_022_000, 6156)
+		// Minimum execution time: 146_586_000 picoseconds.
+		Weight::from_parts(146_586_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -143,8 +143,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `4118`
 		//  Estimated: `6196`
-		// Minimum execution time: 216_917_000 picoseconds.
-		Weight::from_parts(216_917_000, 6196)
+		// Minimum execution time: 220_607_000 picoseconds.
+		Weight::from_parts(220_607_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(13_u64))
 			.saturating_add(T::DbWeight::get().writes(8_u64))
 	}
@@ -162,8 +162,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `1615`
 		//  Estimated: `3670`
-		// Minimum execution time: 63_400_000 picoseconds.
-		Weight::from_parts(63_400_000, 3670)
+		// Minimum execution time: 65_462_000 picoseconds.
+		Weight::from_parts(65_462_000, 3670)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -193,8 +193,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `5170`
 		//  Estimated: `6156`
-		// Minimum execution time: 167_685_000 picoseconds.
-		Weight::from_parts(167_685_000, 6156)
+		// Minimum execution time: 173_437_000 picoseconds.
+		Weight::from_parts(173_437_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(12_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -222,8 +222,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `4970`
 		//  Estimated: `6156`
-		// Minimum execution time: 160_372_000 picoseconds.
-		Weight::from_parts(160_372_000, 6156)
+		// Minimum execution time: 168_361_000 picoseconds.
+		Weight::from_parts(168_361_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(11_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -249,8 +249,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `5017`
 		//  Estimated: `6156`
-		// Minimum execution time: 132_356_000 picoseconds.
-		Weight::from_parts(132_356_000, 6156)
+		// Minimum execution time: 136_432_000 picoseconds.
+		Weight::from_parts(136_432_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(10_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -294,8 +294,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `6357`
 		//  Estimated: `16488`
-		// Minimum execution time: 288_362_000 picoseconds.
-		Weight::from_parts(288_362_000, 16488)
+		// Minimum execution time: 295_958_000 picoseconds.
+		Weight::from_parts(295_958_000, 16488)
 			.saturating_add(T::DbWeight::get().reads(26_u64))
 			.saturating_add(T::DbWeight::get().writes(11_u64))
 	}
@@ -331,8 +331,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `7286`
 		//  Estimated: `11322`
-		// Minimum execution time: 372_601_000 picoseconds.
-		Weight::from_parts(372_601_000, 11322)
+		// Minimum execution time: 233_318_000 picoseconds.
+		Weight::from_parts(233_318_000, 11322)
 			.saturating_add(T::DbWeight::get().reads(18_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -362,8 +362,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `7110`
 		//  Estimated: `8739`
-		// Minimum execution time: 228_906_000 picoseconds.
-		Weight::from_parts(228_906_000, 8739)
+		// Minimum execution time: 237_544_000 picoseconds.
+		Weight::from_parts(237_544_000, 8739)
 			.saturating_add(T::DbWeight::get().reads(15_u64))
 			.saturating_add(T::DbWeight::get().writes(6_u64))
 	}
@@ -411,8 +411,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `6783`
 		//  Estimated: `13905`
-		// Minimum execution time: 445_736_000 picoseconds.
-		Weight::from_parts(445_736_000, 13905)
+		// Minimum execution time: 464_200_000 picoseconds.
+		Weight::from_parts(464_200_000, 13905)
 			.saturating_add(T::DbWeight::get().reads(29_u64))
 			.saturating_add(T::DbWeight::get().writes(16_u64))
 	}
@@ -442,8 +442,8 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `5462`
 		//  Estimated: `6156`
-		// Minimum execution time: 168_251_000 picoseconds.
-		Weight::from_parts(168_251_000, 6156)
+		// Minimum execution time: 172_621_000 picoseconds.
+		Weight::from_parts(172_621_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(12_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -488,10 +488,10 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `6876 + c * (675 ±0)`
 		//  Estimated: `13905 + c * (2701 ±0)`
-		// Minimum execution time: 292_888_000 picoseconds.
-		Weight::from_parts(191_682_426, 13905)
-			// Standard Error: 4_020_027
-			.saturating_add(Weight::from_parts(100_149_887, 0).saturating_mul(c.into()))
+		// Minimum execution time: 302_414_000 picoseconds.
+		Weight::from_parts(200_769_159, 13905)
+			// Standard Error: 2_638_719
+			.saturating_add(Weight::from_parts(101_274_082, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(21_u64))
 			.saturating_add(T::DbWeight::get().reads((5_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(8_u64))
@@ -543,10 +543,10 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `7084 + c * (675 ±0)`
 		//  Estimated: `19071 + c * (2701 ±0)`
-		// Minimum execution time: 433_641_000 picoseconds.
-		Weight::from_parts(340_532_857, 19071)
-			// Standard Error: 2_178_410
-			.saturating_add(Weight::from_parts(94_847_704, 0).saturating_mul(c.into()))
+		// Minimum execution time: 444_647_000 picoseconds.
+		Weight::from_parts(347_303_562, 19071)
+			// Standard Error: 1_125_684
+			.saturating_add(Weight::from_parts(98_289_254, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(26_u64))
 			.saturating_add(T::DbWeight::get().reads((5_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(14_u64))
@@ -597,11 +597,11 @@ impl<T: frame_system::Config> pallet_xyk_liquidity_mining::WeightInfo for HydraW
 	fn exit_farms(c: u32, ) -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `6479 + c * (692 ±0)`
-		//  Estimated: `4811 + c * (3250 ±355)`
-		// Minimum execution time: 298_479_000 picoseconds.
-		Weight::from_parts(83_955_550, 4811)
-			// Standard Error: 11_245_835
-			.saturating_add(Weight::from_parts(193_343_396, 0).saturating_mul(c.into()))
+		//  Estimated: `4811 + c * (3250 ±0)`
+		// Minimum execution time: 309_369_000 picoseconds.
+		Weight::from_parts(62_243_443, 4811)
+			// Standard Error: 19_081_368
+			.saturating_add(Weight::from_parts(212_314_674, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().reads((6_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes((4_u64).saturating_mul(c.into())))

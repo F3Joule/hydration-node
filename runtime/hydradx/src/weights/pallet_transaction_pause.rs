@@ -63,8 +63,8 @@ impl<T: frame_system::Config> pallet_transaction_pause::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `3555`
-		// Minimum execution time: 19_133_000 picoseconds.
-		Weight::from_parts(19_133_000, 3555)
+		// Minimum execution time: 19_285_000 picoseconds.
+		Weight::from_parts(19_285_000, 3555)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -74,8 +74,8 @@ impl<T: frame_system::Config> pallet_transaction_pause::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `193`
 		//  Estimated: `3555`
-		// Minimum execution time: 18_397_000 picoseconds.
-		Weight::from_parts(18_397_000, 3555)
+		// Minimum execution time: 18_365_000 picoseconds.
+		Weight::from_parts(18_365_000, 3555)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

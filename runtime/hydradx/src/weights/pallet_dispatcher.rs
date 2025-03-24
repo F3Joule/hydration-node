@@ -62,10 +62,10 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 19_557_000 picoseconds.
-		Weight::from_parts(17_657_817, 0)
-			// Standard Error: 412
-			.saturating_add(Weight::from_parts(2_456, 0).saturating_mul(n.into()))
+		// Minimum execution time: 19_202_000 picoseconds.
+		Weight::from_parts(19_113_598, 0)
+			// Standard Error: 94
+			.saturating_add(Weight::from_parts(1_975, 0).saturating_mul(n.into()))
 	}
 	/// Storage: `Dispatcher::AaveManagerAccount` (r:1 w:0)
 	/// Proof: `Dispatcher::AaveManagerAccount` (`max_values`: Some(1), `max_size`: Some(32), added: 527, mode: `MaxEncodedLen`)
@@ -74,10 +74,10 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `1517`
-		// Minimum execution time: 23_827_000 picoseconds.
-		Weight::from_parts(24_071_918, 1517)
-			// Standard Error: 75
-			.saturating_add(Weight::from_parts(1_889, 0).saturating_mul(n.into()))
+		// Minimum execution time: 23_965_000 picoseconds.
+		Weight::from_parts(24_274_615, 1517)
+			// Standard Error: 58
+			.saturating_add(Weight::from_parts(1_876, 0).saturating_mul(n.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 	}
 	/// Storage: `Dispatcher::AaveManagerAccount` (r:0 w:1)
@@ -86,8 +86,8 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 5_872_000 picoseconds.
-		Weight::from_parts(5_872_000, 0)
+		// Minimum execution time: 6_185_000 picoseconds.
+		Weight::from_parts(6_185_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 }

@@ -63,8 +63,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `1497`
-		// Minimum execution time: 10_429_000 picoseconds.
-		Weight::from_parts(10_429_000, 1497)
+		// Minimum execution time: 10_409_000 picoseconds.
+		Weight::from_parts(10_409_000, 1497)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -82,8 +82,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `218`
 		//  Estimated: `5487`
-		// Minimum execution time: 21_782_000 picoseconds.
-		Weight::from_parts(21_782_000, 5487)
+		// Minimum execution time: 28_956_000 picoseconds.
+		Weight::from_parts(28_956_000, 5487)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -93,8 +93,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `2767`
-		// Minimum execution time: 5_912_000 picoseconds.
-		Weight::from_parts(5_912_000, 2767)
+		// Minimum execution time: 5_964_000 picoseconds.
+		Weight::from_parts(5_964_000, 2767)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -104,8 +104,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `177`
 		//  Estimated: `2767`
-		// Minimum execution time: 7_610_000 picoseconds.
-		Weight::from_parts(7_610_000, 2767)
+		// Minimum execution time: 7_313_000 picoseconds.
+		Weight::from_parts(7_313_000, 2767)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -113,8 +113,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 9_590_000 picoseconds.
-		Weight::from_parts(9_590_000, 0)
+		// Minimum execution time: 9_689_000 picoseconds.
+		Weight::from_parts(9_689_000, 0)
 	}
 	/// Storage: UNKNOWN KEY `0x7b3237373ffdfeb1cab4222e3b520d6b345d8e88afa015075c945637c07e8f20` (r:1 w:1)
 	/// Proof: UNKNOWN KEY `0x7b3237373ffdfeb1cab4222e3b520d6b345d8e88afa015075c945637c07e8f20` (r:1 w:1)
@@ -134,8 +134,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `134455`
 		//  Estimated: `137920`
-		// Minimum execution time: 244_317_000 picoseconds.
-		Weight::from_parts(244_317_000, 137920)
+		// Minimum execution time: 258_297_000 picoseconds.
+		Weight::from_parts(258_297_000, 137920)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -157,8 +157,8 @@ impl<T: frame_system::Config> cumulus_pallet_xcmp_queue::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `65852`
 		//  Estimated: `69317`
-		// Minimum execution time: 142_242_000 picoseconds.
-		Weight::from_parts(142_242_000, 69317)
+		// Minimum execution time: 141_235_000 picoseconds.
+		Weight::from_parts(141_235_000, 69317)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}

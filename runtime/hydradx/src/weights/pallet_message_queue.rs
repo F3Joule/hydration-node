@@ -65,8 +65,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `294`
 		//  Estimated: `6044`
-		// Minimum execution time: 19_849_000 picoseconds.
-		Weight::from_parts(19_849_000, 6044)
+		// Minimum execution time: 19_759_000 picoseconds.
+		Weight::from_parts(19_759_000, 6044)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -78,8 +78,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `289`
 		//  Estimated: `6044`
-		// Minimum execution time: 18_377_000 picoseconds.
-		Weight::from_parts(18_377_000, 6044)
+		// Minimum execution time: 18_510_000 picoseconds.
+		Weight::from_parts(18_510_000, 6044)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -89,8 +89,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `76`
 		//  Estimated: `3517`
-		// Minimum execution time: 9_124_000 picoseconds.
-		Weight::from_parts(9_124_000, 3517)
+		// Minimum execution time: 8_968_000 picoseconds.
+		Weight::from_parts(8_968_000, 3517)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -100,8 +100,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `143`
 		//  Estimated: `137658`
-		// Minimum execution time: 11_556_000 picoseconds.
-		Weight::from_parts(11_556_000, 137658)
+		// Minimum execution time: 11_665_000 picoseconds.
+		Weight::from_parts(11_665_000, 137658)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -111,8 +111,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `143`
 		//  Estimated: `137658`
-		// Minimum execution time: 11_658_000 picoseconds.
-		Weight::from_parts(11_658_000, 137658)
+		// Minimum execution time: 12_151_000 picoseconds.
+		Weight::from_parts(12_151_000, 137658)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -124,8 +124,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 340_794_000 picoseconds.
-		Weight::from_parts(340_794_000, 0)
+		// Minimum execution time: 308_318_000 picoseconds.
+		Weight::from_parts(308_318_000, 0)
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
 	/// Storage: `MessageQueue::ServiceHead` (r:1 w:1)
@@ -136,8 +136,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `242`
 		//  Estimated: `3517`
-		// Minimum execution time: 12_490_000 picoseconds.
-		Weight::from_parts(12_490_000, 3517)
+		// Minimum execution time: 12_768_000 picoseconds.
+		Weight::from_parts(12_768_000, 3517)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -149,8 +149,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `134345`
 		//  Estimated: `137658`
-		// Minimum execution time: 140_495_000 picoseconds.
-		Weight::from_parts(140_495_000, 137658)
+		// Minimum execution time: 140_908_000 picoseconds.
+		Weight::from_parts(140_908_000, 137658)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -162,8 +162,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `134345`
 		//  Estimated: `137658`
-		// Minimum execution time: 174_562_000 picoseconds.
-		Weight::from_parts(174_562_000, 137658)
+		// Minimum execution time: 174_862_000 picoseconds.
+		Weight::from_parts(174_862_000, 137658)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -175,8 +175,8 @@ impl<T: frame_system::Config> pallet_message_queue::WeightInfo for HydraWeight<T
 		// Proof Size summary in bytes:
 		//  Measured:  `134345`
 		//  Estimated: `137658`
-		// Minimum execution time: 238_862_000 picoseconds.
-		Weight::from_parts(238_862_000, 137658)
+		// Minimum execution time: 239_459_000 picoseconds.
+		Weight::from_parts(239_459_000, 137658)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}

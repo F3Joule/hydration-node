@@ -75,8 +75,8 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `2622`
 		//  Estimated: `42428`
-		// Minimum execution time: 102_415_000 picoseconds.
-		Weight::from_parts(102_415_000, 42428)
+		// Minimum execution time: 106_688_000 picoseconds.
+		Weight::from_parts(106_688_000, 42428)
 			.saturating_add(T::DbWeight::get().reads(7_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -100,8 +100,8 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `2993`
 		//  Estimated: `83866`
-		// Minimum execution time: 134_652_000 picoseconds.
-		Weight::from_parts(134_652_000, 83866)
+		// Minimum execution time: 137_769_000 picoseconds.
+		Weight::from_parts(137_769_000, 83866)
 			.saturating_add(T::DbWeight::get().reads(8_u64))
 			.saturating_add(T::DbWeight::get().writes(7_u64))
 	}
@@ -119,8 +119,8 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `2783`
 		//  Estimated: `83866`
-		// Minimum execution time: 98_699_000 picoseconds.
-		Weight::from_parts(98_699_000, 83866)
+		// Minimum execution time: 116_413_000 picoseconds.
+		Weight::from_parts(116_413_000, 83866)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -134,8 +134,8 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `2257`
 		//  Estimated: `4894`
-		// Minimum execution time: 52_593_000 picoseconds.
-		Weight::from_parts(52_593_000, 4894)
+		// Minimum execution time: 53_991_000 picoseconds.
+		Weight::from_parts(53_991_000, 4894)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -158,10 +158,10 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `216 + r * (1028 ±0)`
 		//  Estimated: `83866 + r * (3411 ±0)`
-		// Minimum execution time: 59_783_000 picoseconds.
-		Weight::from_parts(66_872_375, 83866)
-			// Standard Error: 2_766_259
-			.saturating_add(Weight::from_parts(36_910_687, 0).saturating_mul(r.into()))
+		// Minimum execution time: 60_727_000 picoseconds.
+		Weight::from_parts(68_770_125, 83866)
+			// Standard Error: 2_846_786
+			.saturating_add(Weight::from_parts(37_374_312, 0).saturating_mul(r.into()))
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().reads((2_u64).saturating_mul(r.into())))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
@@ -181,10 +181,10 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `444 + r * (890 ±0)`
 		//  Estimated: `83866 + r * (3411 ±0)`
-		// Minimum execution time: 32_958_000 picoseconds.
-		Weight::from_parts(39_179_625, 83866)
-			// Standard Error: 2_272_931
-			.saturating_add(Weight::from_parts(33_667_562, 0).saturating_mul(r.into()))
+		// Minimum execution time: 32_767_000 picoseconds.
+		Weight::from_parts(39_010_750, 83866)
+			// Standard Error: 2_353_421
+			.saturating_add(Weight::from_parts(34_762_458, 0).saturating_mul(r.into()))
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().reads((2_u64).saturating_mul(r.into())))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
@@ -203,8 +203,8 @@ impl<T: frame_system::Config> pallet_conviction_voting::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `1419`
 		//  Estimated: `4894`
-		// Minimum execution time: 59_637_000 picoseconds.
-		Weight::from_parts(59_637_000, 4894)
+		// Minimum execution time: 60_544_000 picoseconds.
+		Weight::from_parts(60_544_000, 4894)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}

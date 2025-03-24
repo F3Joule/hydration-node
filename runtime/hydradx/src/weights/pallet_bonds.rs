@@ -95,8 +95,8 @@ impl<T: frame_system::Config> pallet_bonds::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1420`
 		//  Estimated: `8799`
-		// Minimum execution time: 292_063_000 picoseconds.
-		Weight::from_parts(292_063_000, 8799)
+		// Minimum execution time: 286_508_000 picoseconds.
+		Weight::from_parts(286_508_000, 8799)
 			.saturating_add(T::DbWeight::get().reads(16_u64))
 			.saturating_add(T::DbWeight::get().writes(14_u64))
 	}
@@ -126,8 +126,8 @@ impl<T: frame_system::Config> pallet_bonds::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2045`
 		//  Estimated: `8799`
-		// Minimum execution time: 212_815_000 picoseconds.
-		Weight::from_parts(212_815_000, 8799)
+		// Minimum execution time: 205_842_000 picoseconds.
+		Weight::from_parts(205_842_000, 8799)
 			.saturating_add(T::DbWeight::get().reads(13_u64))
 			.saturating_add(T::DbWeight::get().writes(7_u64))
 	}

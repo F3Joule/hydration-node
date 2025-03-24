@@ -64,10 +64,10 @@ impl<T: frame_system::Config> pallet_utility::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1489`
-		// Minimum execution time: 17_463_000 picoseconds.
-		Weight::from_parts(28_386_364, 1489)
-			// Standard Error: 43_931
-			.saturating_add(Weight::from_parts(4_236_777, 0).saturating_mul(c.into()))
+		// Minimum execution time: 17_429_000 picoseconds.
+		Weight::from_parts(41_158_984, 1489)
+			// Standard Error: 48_546
+			.saturating_add(Weight::from_parts(4_222_444, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -75,8 +75,8 @@ impl<T: frame_system::Config> pallet_utility::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 10_752_000 picoseconds.
-		Weight::from_parts(10_752_000, 0)
+		// Minimum execution time: 10_800_000 picoseconds.
+		Weight::from_parts(10_800_000, 0)
 	}
 	/// Storage: `Broadcast::IncrementalId` (r:1 w:1)
 	/// Proof: `Broadcast::IncrementalId` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
@@ -85,10 +85,10 @@ impl<T: frame_system::Config> pallet_utility::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1489`
-		// Minimum execution time: 17_509_000 picoseconds.
-		Weight::from_parts(24_308_179, 1489)
-			// Standard Error: 43_624
-			.saturating_add(Weight::from_parts(4_521_555, 0).saturating_mul(c.into()))
+		// Minimum execution time: 21_322_000 picoseconds.
+		Weight::from_parts(30_697_132, 1489)
+			// Standard Error: 42_586
+			.saturating_add(Weight::from_parts(4_504_263, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -96,8 +96,8 @@ impl<T: frame_system::Config> pallet_utility::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 16_402_000 picoseconds.
-		Weight::from_parts(16_402_000, 0)
+		// Minimum execution time: 16_747_000 picoseconds.
+		Weight::from_parts(16_747_000, 0)
 	}
 	/// Storage: `Broadcast::IncrementalId` (r:1 w:1)
 	/// Proof: `Broadcast::IncrementalId` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
@@ -106,10 +106,10 @@ impl<T: frame_system::Config> pallet_utility::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1489`
-		// Minimum execution time: 17_048_000 picoseconds.
-		Weight::from_parts(26_281_697, 1489)
-			// Standard Error: 48_397
-			.saturating_add(Weight::from_parts(4_222_397, 0).saturating_mul(c.into()))
+		// Minimum execution time: 17_525_000 picoseconds.
+		Weight::from_parts(19_873_669, 1489)
+			// Standard Error: 48_810
+			.saturating_add(Weight::from_parts(4_290_179, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

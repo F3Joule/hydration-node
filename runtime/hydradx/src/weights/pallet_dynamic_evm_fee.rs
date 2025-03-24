@@ -75,8 +75,8 @@ impl<T: frame_system::Config> pallet_dynamic_evm_fee::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `2801`
 		//  Estimated: `11598`
-		// Minimum execution time: 90_700_000 picoseconds.
-		Weight::from_parts(90_700_000, 11598)
+		// Minimum execution time: 90_733_000 picoseconds.
+		Weight::from_parts(90_733_000, 11598)
 			.saturating_add(T::DbWeight::get().reads(10_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

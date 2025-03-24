@@ -69,8 +69,8 @@ impl<T: frame_system::Config> orml_vesting::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1884`
 		//  Estimated: `6315`
-		// Minimum execution time: 121_564_000 picoseconds.
-		Weight::from_parts(121_564_000, 6315)
+		// Minimum execution time: 117_478_000 picoseconds.
+		Weight::from_parts(117_478_000, 6315)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -85,10 +85,10 @@ impl<T: frame_system::Config> orml_vesting::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2003 + i * (18 ±0)`
 		//  Estimated: `6315`
-		// Minimum execution time: 73_518_000 picoseconds.
-		Weight::from_parts(73_576_481, 6315)
-			// Standard Error: 5_786
-			.saturating_add(Weight::from_parts(92_081, 0).saturating_mul(i.into()))
+		// Minimum execution time: 70_055_000 picoseconds.
+		Weight::from_parts(72_087_551, 6315)
+			// Standard Error: 8_050
+			.saturating_add(Weight::from_parts(92_028, 0).saturating_mul(i.into()))
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -105,10 +105,10 @@ impl<T: frame_system::Config> orml_vesting::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1585`
 		//  Estimated: `4764`
-		// Minimum execution time: 65_927_000 picoseconds.
-		Weight::from_parts(66_984_008, 4764)
-			// Standard Error: 5_272
-			.saturating_add(Weight::from_parts(114_599, 0).saturating_mul(i.into()))
+		// Minimum execution time: 64_293_000 picoseconds.
+		Weight::from_parts(66_884_452, 4764)
+			// Standard Error: 70_973
+			.saturating_add(Weight::from_parts(126_187, 0).saturating_mul(i.into()))
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}

@@ -71,8 +71,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `2129`
 		//  Estimated: `6196`
-		// Minimum execution time: 110_661_000 picoseconds.
-		Weight::from_parts(110_661_000, 6196)
+		// Minimum execution time: 110_815_000 picoseconds.
+		Weight::from_parts(110_815_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -88,8 +88,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `6645`
 		//  Estimated: `6294`
-		// Minimum execution time: 155_080_000 picoseconds.
-		Weight::from_parts(155_080_000, 6294)
+		// Minimum execution time: 157_710_000 picoseconds.
+		Weight::from_parts(157_710_000, 6294)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -103,8 +103,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `5901`
 		//  Estimated: `6196`
-		// Minimum execution time: 119_573_000 picoseconds.
-		Weight::from_parts(119_573_000, 6196)
+		// Minimum execution time: 119_773_000 picoseconds.
+		Weight::from_parts(119_773_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -128,8 +128,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `7141`
 		//  Estimated: `6294`
-		// Minimum execution time: 178_629_000 picoseconds.
-		Weight::from_parts(178_629_000, 6294)
+		// Minimum execution time: 177_872_000 picoseconds.
+		Weight::from_parts(177_872_000, 6294)
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().writes(6_u64))
 	}
@@ -151,8 +151,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `7647`
 		//  Estimated: `6294`
-		// Minimum execution time: 182_345_000 picoseconds.
-		Weight::from_parts(182_345_000, 6294)
+		// Minimum execution time: 182_656_000 picoseconds.
+		Weight::from_parts(182_656_000, 6294)
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -172,8 +172,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `7220`
 		//  Estimated: `6294`
-		// Minimum execution time: 172_303_000 picoseconds.
-		Weight::from_parts(172_303_000, 6294)
+		// Minimum execution time: 173_262_000 picoseconds.
+		Weight::from_parts(173_262_000, 6294)
 			.saturating_add(T::DbWeight::get().reads(8_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -195,8 +195,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `7764`
 		//  Estimated: `6294`
-		// Minimum execution time: 178_588_000 picoseconds.
-		Weight::from_parts(178_588_000, 6294)
+		// Minimum execution time: 180_308_000 picoseconds.
+		Weight::from_parts(180_308_000, 6294)
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -212,8 +212,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `6269`
 		//  Estimated: `6196`
-		// Minimum execution time: 114_744_000 picoseconds.
-		Weight::from_parts(114_744_000, 6196)
+		// Minimum execution time: 115_396_000 picoseconds.
+		Weight::from_parts(115_396_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -251,8 +251,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `10537`
 		//  Estimated: `11598`
-		// Minimum execution time: 277_598_000 picoseconds.
-		Weight::from_parts(277_598_000, 11598)
+		// Minimum execution time: 276_332_000 picoseconds.
+		Weight::from_parts(276_332_000, 11598)
 			.saturating_add(T::DbWeight::get().reads(17_u64))
 			.saturating_add(T::DbWeight::get().writes(14_u64))
 	}
@@ -280,8 +280,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `13539`
 		//  Estimated: `11598`
-		// Minimum execution time: 241_077_000 picoseconds.
-		Weight::from_parts(241_077_000, 11598)
+		// Minimum execution time: 238_613_000 picoseconds.
+		Weight::from_parts(238_613_000, 11598)
 			.saturating_add(T::DbWeight::get().reads(15_u64))
 			.saturating_add(T::DbWeight::get().writes(5_u64))
 	}
@@ -303,8 +303,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `10785`
 		//  Estimated: `8799`
-		// Minimum execution time: 234_638_000 picoseconds.
-		Weight::from_parts(234_638_000, 8799)
+		// Minimum execution time: 230_122_000 picoseconds.
+		Weight::from_parts(230_122_000, 8799)
 			.saturating_add(T::DbWeight::get().reads(10_u64))
 			.saturating_add(T::DbWeight::get().writes(6_u64))
 	}
@@ -336,8 +336,8 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `9241`
 		//  Estimated: `8799`
-		// Minimum execution time: 326_686_000 picoseconds.
-		Weight::from_parts(326_686_000, 8799)
+		// Minimum execution time: 325_118_000 picoseconds.
+		Weight::from_parts(325_118_000, 8799)
 			.saturating_add(T::DbWeight::get().reads(15_u64))
 			.saturating_add(T::DbWeight::get().writes(15_u64))
 	}
@@ -376,10 +376,10 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `18828 + c * (507 ±0)`
 		//  Estimated: `11598 + c * (2680 ±0)`
-		// Minimum execution time: 283_019_000 picoseconds.
-		Weight::from_parts(183_140_976, 11598)
-			// Standard Error: 487_200
-			.saturating_add(Weight::from_parts(102_706_284, 0).saturating_mul(c.into()))
+		// Minimum execution time: 282_348_000 picoseconds.
+		Weight::from_parts(179_730_136, 11598)
+			// Standard Error: 761_755
+			.saturating_add(Weight::from_parts(104_367_366, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(14_u64))
 			.saturating_add(T::DbWeight::get().reads((3_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(11_u64))
@@ -447,10 +447,10 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `20545 + c * (507 ±0)`
 		//  Estimated: `14250 + c * (2680 ±0)`
-		// Minimum execution time: 568_328_000 picoseconds.
-		Weight::from_parts(465_138_692, 14250)
-			// Standard Error: 1_338_012
-			.saturating_add(Weight::from_parts(106_731_692, 0).saturating_mul(c.into()))
+		// Minimum execution time: 572_272_000 picoseconds.
+		Weight::from_parts(460_013_863, 14250)
+			// Standard Error: 2_991_823
+			.saturating_add(Weight::from_parts(112_511_633, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(36_u64))
 			.saturating_add(T::DbWeight::get().reads((3_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(24_u64))
@@ -486,10 +486,10 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `11264 + c * (518 ±0)`
 		//  Estimated: `6320 + c * (2680 ±0)`
-		// Minimum execution time: 282_649_000 picoseconds.
-		Weight::from_parts(115_135_698, 6320)
-			// Standard Error: 3_009_732
-			.saturating_add(Weight::from_parts(163_984_621, 0).saturating_mul(c.into()))
+		// Minimum execution time: 284_110_000 picoseconds.
+		Weight::from_parts(113_611_337, 6320)
+			// Standard Error: 2_988_327
+			.saturating_add(Weight::from_parts(166_029_952, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().reads((3_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
@@ -563,10 +563,10 @@ impl<T: frame_system::Config> pallet_omnipool_liquidity_mining::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `22996 + c * (507 ±0)`
 		//  Estimated: `34569 + c * (2680 ±0)`
-		// Minimum execution time: 1_705_498_000 picoseconds.
-		Weight::from_parts(1_611_035_082, 34569)
-			// Standard Error: 2_878_174
-			.saturating_add(Weight::from_parts(103_177_005, 0).saturating_mul(c.into()))
+		// Minimum execution time: 1_708_988_000 picoseconds.
+		Weight::from_parts(1_608_552_408, 34569)
+			// Standard Error: 5_573_835
+			.saturating_add(Weight::from_parts(109_550_100, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(62_u64))
 			.saturating_add(T::DbWeight::get().reads((3_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes(35_u64))
