@@ -98,31 +98,32 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ "${ALL}" -eq 1 ]]; then
-    mkdir -p "$OUTPUT"
-    # FIXME: This is a temporary solution to filter out XCM pallets
-    XCM_FILTER=("pallet_xcm_benchmarks::fungible" "pallet_xcm_benchmarks::generic")
-
-    while read benchmark; do
-      # Skip benchmarks that match items in XCM_FILTER
-      skip=0
-      for xcm_item in "${XCM_FILTER[@]}"; do
-        if [[ "$benchmark" == *"$xcm_item"* ]]; then
-          skip=1
-          break
-        fi
-      done
-
-      if [[ $skip -eq 0 ]]; then
-        options+=("$benchmark")
-      fi
-    done < <(${BINARY} benchmark pallet --list=pallets | sed 1d)
-
-    for option in "${options[@]}"; do
-      _path="${OUTPUT}${option}.rs"
-
-      touch "${_path}" # TODO: Remove this once benchmarking-cli doesn't fail on missing files
-      bench "${option}" '*' "${CHECK}" "${_path}"
-    done
+#    mkdir -p "$OUTPUT"
+#    # FIXME: This is a temporary solution to filter out XCM pallets
+#    XCM_FILTER=("pallet_xcm_benchmarks::fungible" "pallet_xcm_benchmarks::generic")
+#
+#    while read benchmark; do
+#      # Skip benchmarks that match items in XCM_FILTER
+#      skip=0
+#      for xcm_item in "${XCM_FILTER[@]}"; do
+#        if [[ "$benchmark" == *"$xcm_item"* ]]; then
+#          skip=1
+#          break
+#        fi
+#      done
+#
+#      if [[ $skip -eq 0 ]]; then
+#        options+=("$benchmark")
+#      fi
+#    done < <(${BINARY} benchmark pallet --list=pallets | sed 1d)
+#
+#    for option in "${options[@]}"; do
+#      _path="${OUTPUT}${option}.rs"
+#
+#      touch "${_path}" # TODO: Remove this once benchmarking-cli doesn't fail on missing files
+#      bench "${option}" '*' "${CHECK}" "${_path}"
+#    done
+    bench "pallet_dca" "*" "${CHECK}" "${OUTPUT}pallet_dca.rs"
 elif [[ ${#ARGS[@]} -ne 2 ]]; then
     choose_and_bench "${CHECK}"
 else
