@@ -51,7 +51,7 @@ function bench {
         exit 1
     fi
 
-    local output_file=${4:-weights.rs}
+    local output_file=${OUTPUT:-weights.rs}
     echo "benchmarking '${1}::${2}' --check=${3}, writing results to '${output_file}'"
 
     # Check enabled
