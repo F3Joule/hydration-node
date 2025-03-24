@@ -136,7 +136,7 @@ jobs:
           git add runtime/hydradx/src/weights/
           if git diff --staged --quiet; then
             echo "No changes to commit"
-            exit 0
+            exit 78
           fi
 
           # Commit changes
