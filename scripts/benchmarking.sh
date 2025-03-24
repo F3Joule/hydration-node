@@ -68,7 +68,8 @@ function bench {
         --steps "${STEPS}" \
         --repeat "${REPEAT}" \
         --template=scripts/pallet-weight-template.hbs \
-        --output "${output_file}"
+        --output "${output_file}" \
+        --quiet
 }
 
 CHECK=0
