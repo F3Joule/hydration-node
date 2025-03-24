@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/cumulus_pallet_parachain_system.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -72,10 +73,10 @@ impl<T: frame_system::Config> cumulus_pallet_parachain_system::WeightInfo for Hy
 		// Proof Size summary in bytes:
 		//  Measured:  `185`
 		//  Estimated: `3517`
-		// Minimum execution time: 5_298_000 picoseconds.
-		Weight::from_parts(5_298_000, 3517)
-			// Standard Error: 417_104
-			.saturating_add(Weight::from_parts(332_741_741, 0).saturating_mul(n.into()))
+		// Minimum execution time: 5_532_000 picoseconds.
+		Weight::from_parts(5_532_000, 3517)
+			// Standard Error: 726_296
+			.saturating_add(Weight::from_parts(335_964_758, 0).saturating_mul(n.into()))
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(n.into())))

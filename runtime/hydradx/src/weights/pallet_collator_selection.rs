@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_collator_selection.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -66,10 +67,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `206 + b * (79 ±0)`
 		//  Estimated: `1195 + b * (2554 ±0)`
-		// Minimum execution time: 21_078_000 picoseconds.
-		Weight::from_parts(18_479_566, 1195)
-			// Standard Error: 25_630
-			.saturating_add(Weight::from_parts(4_312_159, 0).saturating_mul(b.into()))
+		// Minimum execution time: 20_402_000 picoseconds.
+		Weight::from_parts(16_101_897, 1195)
+			// Standard Error: 134_614
+			.saturating_add(Weight::from_parts(4_384_091, 0).saturating_mul(b.into()))
 			.saturating_add(T::DbWeight::get().reads((1_u64).saturating_mul(b.into())))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 			.saturating_add(Weight::from_parts(0, 2554).saturating_mul(b.into()))
@@ -88,12 +89,8 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `951 + b * (41 ±0) + c * (48 ±0)`
 		//  Estimated: `4419 + b * (42 ±0) + c * (48 ±1)`
-		// Minimum execution time: 57_800_000 picoseconds.
-		Weight::from_parts(56_163_665, 4419)
-			// Standard Error: 14_061
-			.saturating_add(Weight::from_parts(166_324, 0).saturating_mul(b.into()))
-			// Standard Error: 36_998
-			.saturating_add(Weight::from_parts(36_620, 0).saturating_mul(c.into()))
+		// Minimum execution time: 58_695_000 picoseconds.
+		Weight::from_parts(66_994_614, 4419)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 			.saturating_add(Weight::from_parts(0, 42).saturating_mul(b.into()))
@@ -108,10 +105,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `285 + b * (32 ±0)`
 		//  Estimated: `3086`
-		// Minimum execution time: 20_105_000 picoseconds.
-		Weight::from_parts(19_881_409, 3086)
-			// Standard Error: 3_225
-			.saturating_add(Weight::from_parts(35_357, 0).saturating_mul(b.into()))
+		// Minimum execution time: 20_204_000 picoseconds.
+		Weight::from_parts(20_895_252, 3086)
+			// Standard Error: 17_916
+			.saturating_add(Weight::from_parts(12_336, 0).saturating_mul(b.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -121,8 +118,8 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 11_778_000 picoseconds.
-		Weight::from_parts(11_778_000, 0)
+		// Minimum execution time: 11_964_000 picoseconds.
+		Weight::from_parts(11_964_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `CollatorSelection::CandidacyBond` (r:1 w:1)
@@ -139,12 +136,12 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `0 + c * (178 ±0) + k * (127 ±0)`
 		//  Estimated: `3593 + c * (864 ±183) + k * (864 ±183)`
-		// Minimum execution time: 18_674_000 picoseconds.
-		Weight::from_parts(18_674_000, 3593)
-			// Standard Error: 1_109_913
-			.saturating_add(Weight::from_parts(6_604_412, 0).saturating_mul(c.into()))
-			// Standard Error: 1_109_913
-			.saturating_add(Weight::from_parts(6_278_706, 0).saturating_mul(k.into()))
+		// Minimum execution time: 19_144_000 picoseconds.
+		Weight::from_parts(19_144_000, 3593)
+			// Standard Error: 1_133_883
+			.saturating_add(Weight::from_parts(6_518_537, 0).saturating_mul(c.into()))
+			// Standard Error: 1_133_883
+			.saturating_add(Weight::from_parts(6_431_738, 0).saturating_mul(k.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(c.into())))
@@ -161,10 +158,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `529 + c * (48 ±0)`
 		//  Estimated: `2446`
-		// Minimum execution time: 38_880_000 picoseconds.
-		Weight::from_parts(39_675_710, 2446)
-			// Standard Error: 28_030
-			.saturating_add(Weight::from_parts(15_122, 0).saturating_mul(c.into()))
+		// Minimum execution time: 39_319_000 picoseconds.
+		Weight::from_parts(38_369_951, 2446)
+			// Standard Error: 189_996
+			.saturating_add(Weight::from_parts(260_908, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -183,10 +180,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `717 + c * (60 ±0)`
 		//  Estimated: `4183 + c * (61 ±0)`
-		// Minimum execution time: 55_824_000 picoseconds.
-		Weight::from_parts(56_960_809, 4183)
-			// Standard Error: 168_716
-			.saturating_add(Weight::from_parts(114_396, 0).saturating_mul(c.into()))
+		// Minimum execution time: 56_027_000 picoseconds.
+		Weight::from_parts(56_283_352, 4183)
+			// Standard Error: 23_574
+			.saturating_add(Weight::from_parts(106_054, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 			.saturating_add(Weight::from_parts(0, 61).saturating_mul(c.into()))
@@ -208,10 +205,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `822 + c * (61 ±0)`
 		//  Estimated: `4279 + c * (62 ±0)`
-		// Minimum execution time: 74_322_000 picoseconds.
-		Weight::from_parts(74_470_187, 4279)
-			// Standard Error: 61_477
-			.saturating_add(Weight::from_parts(155_644, 0).saturating_mul(c.into()))
+		// Minimum execution time: 75_077_000 picoseconds.
+		Weight::from_parts(75_214_703, 4279)
+			// Standard Error: 21_438
+			.saturating_add(Weight::from_parts(90_473, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 			.saturating_add(Weight::from_parts(0, 62).saturating_mul(c.into()))
@@ -227,10 +224,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `507 + c * (48 ±0)`
 		//  Estimated: `3086`
-		// Minimum execution time: 42_048_000 picoseconds.
-		Weight::from_parts(43_759_530, 3086)
-			// Standard Error: 261_277
-			.saturating_add(Weight::from_parts(46_200, 0).saturating_mul(c.into()))
+		// Minimum execution time: 42_191_000 picoseconds.
+		Weight::from_parts(42_493_446, 3086)
+			// Standard Error: 18_615
+			.saturating_add(Weight::from_parts(44_473, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -242,8 +239,8 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `192`
 		//  Estimated: `6196`
-		// Minimum execution time: 59_358_000 picoseconds.
-		Weight::from_parts(59_358_000, 6196)
+		// Minimum execution time: 60_198_000 picoseconds.
+		Weight::from_parts(60_198_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -263,10 +260,10 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for HydraWei
 		// Proof Size summary in bytes:
 		//  Measured:  `478 + c * (98 ±0) + r * (132 ±0)`
 		//  Estimated: `3086 + c * (2519 ±0) + r * (2603 ±0)`
-		// Minimum execution time: 34_121_000 picoseconds.
-		Weight::from_parts(34_121_000, 3086)
-			// Standard Error: 1_801_035
-			.saturating_add(Weight::from_parts(14_639_372, 0).saturating_mul(c.into()))
+		// Minimum execution time: 33_295_000 picoseconds.
+		Weight::from_parts(33_295_000, 3086)
+			// Standard Error: 1_826_064
+			.saturating_add(Weight::from_parts(14_924_406, 0).saturating_mul(c.into()))
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().reads((1_u64).saturating_mul(c.into())))
 			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(c.into())))

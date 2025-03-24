@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_state_trie_migration.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -67,8 +68,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `174`
 		//  Estimated: `3550`
-		// Minimum execution time: 37_088_000 picoseconds.
-		Weight::from_parts(37_088_000, 3550)
+		// Minimum execution time: 37_192_000 picoseconds.
+		Weight::from_parts(37_192_000, 3550)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -78,8 +79,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `1493`
-		// Minimum execution time: 13_079_000 picoseconds.
-		Weight::from_parts(13_079_000, 1493)
+		// Minimum execution time: 13_081_000 picoseconds.
+		Weight::from_parts(13_081_000, 1493)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 	}
 	/// Storage: `Balances::Holds` (r:1 w:0)
@@ -88,8 +89,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `3550`
-		// Minimum execution time: 19_871_000 picoseconds.
-		Weight::from_parts(19_871_000, 3550)
+		// Minimum execution time: 20_053_000 picoseconds.
+		Weight::from_parts(20_053_000, 3550)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 	}
 	/// Storage: `Balances::Holds` (r:1 w:1)
@@ -100,8 +101,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `179`
 		//  Estimated: `3644`
-		// Minimum execution time: 88_237_000 picoseconds.
-		Weight::from_parts(88_237_000, 3644)
+		// Minimum execution time: 88_347_000 picoseconds.
+		Weight::from_parts(88_347_000, 3644)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -111,8 +112,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `3550`
-		// Minimum execution time: 22_436_000 picoseconds.
-		Weight::from_parts(22_436_000, 3550)
+		// Minimum execution time: 22_334_000 picoseconds.
+		Weight::from_parts(22_334_000, 3550)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 	}
 	/// Storage: `Balances::Holds` (r:1 w:1)
@@ -123,8 +124,8 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `106`
 		//  Estimated: `3571`
-		// Minimum execution time: 89_319_000 picoseconds.
-		Weight::from_parts(89_319_000, 3571)
+		// Minimum execution time: 104_543_000 picoseconds.
+		Weight::from_parts(104_543_000, 3571)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -135,10 +136,10 @@ impl<T: frame_system::Config> pallet_state_trie_migration::WeightInfo for HydraW
 		// Proof Size summary in bytes:
 		//  Measured:  `295 + v * (1 ±0)`
 		//  Estimated: `3759 + v * (1 ±0)`
-		// Minimum execution time: 10_716_000 picoseconds.
-		Weight::from_parts(10_716_000, 3759)
-			// Standard Error: 8
-			.saturating_add(Weight::from_parts(2_041, 0).saturating_mul(v.into()))
+		// Minimum execution time: 10_597_000 picoseconds.
+		Weight::from_parts(10_597_000, 3759)
+			// Standard Error: 7
+			.saturating_add(Weight::from_parts(2_044, 0).saturating_mul(v.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 			.saturating_add(Weight::from_parts(0, 1).saturating_mul(v.into()))

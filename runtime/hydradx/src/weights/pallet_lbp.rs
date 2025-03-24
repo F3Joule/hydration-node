@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_lbp.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -81,8 +82,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1586`
 		//  Estimated: `11322`
-		// Minimum execution time: 174_066_000 picoseconds.
-		Weight::from_parts(174_066_000, 11322)
+		// Minimum execution time: 173_299_000 picoseconds.
+		Weight::from_parts(173_299_000, 11322)
 			.saturating_add(T::DbWeight::get().reads(16_u64))
 			.saturating_add(T::DbWeight::get().writes(8_u64))
 	}
@@ -94,8 +95,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `417`
 		//  Estimated: `3628`
-		// Minimum execution time: 30_798_000 picoseconds.
-		Weight::from_parts(30_798_000, 3628)
+		// Minimum execution time: 30_695_000 picoseconds.
+		Weight::from_parts(30_695_000, 3628)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -117,8 +118,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1846`
 		//  Estimated: `11322`
-		// Minimum execution time: 132_900_000 picoseconds.
-		Weight::from_parts(132_900_000, 11322)
+		// Minimum execution time: 133_620_000 picoseconds.
+		Weight::from_parts(133_620_000, 11322)
 			.saturating_add(T::DbWeight::get().reads(12_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -146,8 +147,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1962`
 		//  Estimated: `11322`
-		// Minimum execution time: 167_273_000 picoseconds.
-		Weight::from_parts(167_273_000, 11322)
+		// Minimum execution time: 168_207_000 picoseconds.
+		Weight::from_parts(168_207_000, 11322)
 			.saturating_add(T::DbWeight::get().reads(14_u64))
 			.saturating_add(T::DbWeight::get().writes(8_u64))
 	}
@@ -171,8 +172,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2251`
 		//  Estimated: `13905`
-		// Minimum execution time: 290_691_000 picoseconds.
-		Weight::from_parts(290_691_000, 13905)
+		// Minimum execution time: 312_345_000 picoseconds.
+		Weight::from_parts(312_345_000, 13905)
 			.saturating_add(T::DbWeight::get().reads(17_u64))
 			.saturating_add(T::DbWeight::get().writes(7_u64))
 	}
@@ -196,8 +197,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2251`
 		//  Estimated: `13905`
-		// Minimum execution time: 283_533_000 picoseconds.
-		Weight::from_parts(283_533_000, 13905)
+		// Minimum execution time: 286_823_000 picoseconds.
+		Weight::from_parts(286_823_000, 13905)
 			.saturating_add(T::DbWeight::get().reads(17_u64))
 			.saturating_add(T::DbWeight::get().writes(7_u64))
 	}
@@ -223,12 +224,12 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1052 + e * (1199 ±0)`
 		//  Estimated: `6190 + e * (7749 ±0)`
-		// Minimum execution time: 106_138_000 picoseconds.
-		Weight::from_parts(106_806_000, 6190)
-			// Standard Error: 3_651_873
-			.saturating_add(Weight::from_parts(3_497_045, 0).saturating_mul(c.into()))
-			// Standard Error: 8_015_993
-			.saturating_add(Weight::from_parts(187_923_582, 0).saturating_mul(e.into()))
+		// Minimum execution time: 107_994_000 picoseconds.
+		Weight::from_parts(109_372_000, 6190)
+			// Standard Error: 3_746_928
+			.saturating_add(Weight::from_parts(3_740_427, 0).saturating_mul(c.into()))
+			// Standard Error: 8_224_641
+			.saturating_add(Weight::from_parts(187_231_949, 0).saturating_mul(e.into()))
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().reads((12_u64).saturating_mul(e.into())))
 			.saturating_add(T::DbWeight::get().writes((7_u64).saturating_mul(e.into())))
@@ -256,12 +257,12 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1052 + e * (1199 ±0)`
 		//  Estimated: `6190 + e * (7749 ±0)`
-		// Minimum execution time: 181_475_000 picoseconds.
-		Weight::from_parts(181_866_000, 6190)
-			// Standard Error: 4_778_161
-			.saturating_add(Weight::from_parts(5_471_694, 0).saturating_mul(c.into()))
-			// Standard Error: 15_977_801
-			.saturating_add(Weight::from_parts(158_311_827, 0).saturating_mul(e.into()))
+		// Minimum execution time: 184_737_000 picoseconds.
+		Weight::from_parts(186_689_000, 6190)
+			// Standard Error: 4_362_255
+			.saturating_add(Weight::from_parts(5_260_086, 0).saturating_mul(c.into()))
+			// Standard Error: 14_587_043
+			.saturating_add(Weight::from_parts(152_889_570, 0).saturating_mul(e.into()))
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().reads((12_u64).saturating_mul(e.into())))
 			.saturating_add(T::DbWeight::get().writes((7_u64).saturating_mul(e.into())))
@@ -277,8 +278,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1052`
 		//  Estimated: `6190`
-		// Minimum execution time: 107_590_000 picoseconds.
-		Weight::from_parts(107_590_000, 6190)
+		// Minimum execution time: 109_556_000 picoseconds.
+		Weight::from_parts(109_556_000, 6190)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 	}
 	/// Storage: `LBP::PoolData` (r:1 w:0)
@@ -293,8 +294,8 @@ impl<T: frame_system::Config> pallet_lbp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1052`
 		//  Estimated: `6190`
-		// Minimum execution time: 46_409_000 picoseconds.
-		Weight::from_parts(46_409_000, 6190)
+		// Minimum execution time: 46_541_000 picoseconds.
+		Weight::from_parts(46_541_000, 6190)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 	}
 }

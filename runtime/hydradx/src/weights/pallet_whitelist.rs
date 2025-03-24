@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_whitelist.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -67,8 +68,8 @@ impl<T: frame_system::Config> pallet_whitelist::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `251`
 		//  Estimated: `3556`
-		// Minimum execution time: 38_462_000 picoseconds.
-		Weight::from_parts(38_462_000, 3556)
+		// Minimum execution time: 33_392_000 picoseconds.
+		Weight::from_parts(33_392_000, 3556)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -82,8 +83,8 @@ impl<T: frame_system::Config> pallet_whitelist::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `380`
 		//  Estimated: `3556`
-		// Minimum execution time: 29_262_000 picoseconds.
-		Weight::from_parts(29_262_000, 3556)
+		// Minimum execution time: 29_224_000 picoseconds.
+		Weight::from_parts(29_224_000, 3556)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -100,10 +101,10 @@ impl<T: frame_system::Config> pallet_whitelist::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `456 + n * (1 ±0)`
 		//  Estimated: `3918 + n * (1 ±0)`
-		// Minimum execution time: 47_325_000 picoseconds.
-		Weight::from_parts(47_325_000, 3918)
-			// Standard Error: 30
-			.saturating_add(Weight::from_parts(1_298, 0).saturating_mul(n.into()))
+		// Minimum execution time: 46_462_000 picoseconds.
+		Weight::from_parts(46_462_000, 3918)
+			// Standard Error: 31
+			.saturating_add(Weight::from_parts(1_309, 0).saturating_mul(n.into()))
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 			.saturating_add(Weight::from_parts(0, 1).saturating_mul(n.into()))
@@ -119,10 +120,10 @@ impl<T: frame_system::Config> pallet_whitelist::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `380`
 		//  Estimated: `3556`
-		// Minimum execution time: 35_611_000 picoseconds.
-		Weight::from_parts(36_554_564, 3556)
-			// Standard Error: 82
-			.saturating_add(Weight::from_parts(1_930, 0).saturating_mul(n.into()))
+		// Minimum execution time: 35_144_000 picoseconds.
+		Weight::from_parts(35_859_140, 3556)
+			// Standard Error: 69
+			.saturating_add(Weight::from_parts(1_915, 0).saturating_mul(n.into()))
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}

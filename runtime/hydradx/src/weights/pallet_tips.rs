@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_tips.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -66,10 +67,10 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `42`
 		//  Estimated: `3507`
-		// Minimum execution time: 44_407_000 picoseconds.
-		Weight::from_parts(44_663_388, 3507)
-			// Standard Error: 530
-			.saturating_add(Weight::from_parts(1_461, 0).saturating_mul(r.into()))
+		// Minimum execution time: 44_520_000 picoseconds.
+		Weight::from_parts(45_121_483, 3507)
+			// Standard Error: 923
+			.saturating_add(Weight::from_parts(1_231, 0).saturating_mul(r.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -81,8 +82,8 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `259`
 		//  Estimated: `3724`
-		// Minimum execution time: 40_528_000 picoseconds.
-		Weight::from_parts(40_528_000, 3724)
+		// Minimum execution time: 40_002_000 picoseconds.
+		Weight::from_parts(40_002_000, 3724)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -98,10 +99,12 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `438 + t * (64 ±0)`
 		//  Estimated: `3903 + t * (64 ±0)`
-		// Minimum execution time: 32_087_000 picoseconds.
-		Weight::from_parts(33_087_220, 3903)
-			// Standard Error: 247
-			.saturating_add(Weight::from_parts(2_011, 0).saturating_mul(r.into()))
+		// Minimum execution time: 31_169_000 picoseconds.
+		Weight::from_parts(30_008_284, 3903)
+			// Standard Error: 1_641
+			.saturating_add(Weight::from_parts(4_250, 0).saturating_mul(r.into()))
+			// Standard Error: 134_464
+			.saturating_add(Weight::from_parts(55_320, 0).saturating_mul(t.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 			.saturating_add(Weight::from_parts(0, 64).saturating_mul(t.into()))
@@ -115,10 +118,10 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `659 + t * (112 ±0)`
 		//  Estimated: `4124 + t * (112 ±0)`
-		// Minimum execution time: 24_921_000 picoseconds.
-		Weight::from_parts(25_171_742, 4124)
-			// Standard Error: 75_418
-			.saturating_add(Weight::from_parts(160_670, 0).saturating_mul(t.into()))
+		// Minimum execution time: 25_189_000 picoseconds.
+		Weight::from_parts(25_019_281, 4124)
+			// Standard Error: 13_715
+			.saturating_add(Weight::from_parts(163_297, 0).saturating_mul(t.into()))
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 			.saturating_add(Weight::from_parts(0, 112).saturating_mul(t.into()))
@@ -136,10 +139,8 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `801 + t * (112 ±0)`
 		//  Estimated: `6196 + t * (111 ±1)`
-		// Minimum execution time: 82_275_000 picoseconds.
-		Weight::from_parts(82_939_525, 6196)
-			// Standard Error: 48_232
-			.saturating_add(Weight::from_parts(96_750, 0).saturating_mul(t.into()))
+		// Minimum execution time: 81_817_000 picoseconds.
+		Weight::from_parts(90_057_195, 6196)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 			.saturating_add(Weight::from_parts(0, 111).saturating_mul(t.into()))
@@ -153,8 +154,8 @@ impl<T: frame_system::Config> pallet_tips::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `307`
 		//  Estimated: `3772`
-		// Minimum execution time: 21_674_000 picoseconds.
-		Weight::from_parts(22_157_597, 3772)
+		// Minimum execution time: 21_700_000 picoseconds.
+		Weight::from_parts(22_379_011, 3772)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}

@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_transaction_pause.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -63,8 +64,8 @@ impl<T: frame_system::Config> pallet_transaction_pause::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `3555`
-		// Minimum execution time: 19_285_000 picoseconds.
-		Weight::from_parts(19_285_000, 3555)
+		// Minimum execution time: 32_299_000 picoseconds.
+		Weight::from_parts(32_299_000, 3555)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -74,8 +75,8 @@ impl<T: frame_system::Config> pallet_transaction_pause::WeightInfo for HydraWeig
 		// Proof Size summary in bytes:
 		//  Measured:  `193`
 		//  Estimated: `3555`
-		// Minimum execution time: 18_365_000 picoseconds.
-		Weight::from_parts(18_365_000, 3555)
+		// Minimum execution time: 18_148_000 picoseconds.
+		Weight::from_parts(18_148_000, 3555)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

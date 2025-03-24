@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_timestamp.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -63,8 +64,8 @@ impl<T: frame_system::Config> pallet_timestamp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `3`
 		//  Estimated: `1493`
-		// Minimum execution time: 10_787_000 picoseconds.
-		Weight::from_parts(10_787_000, 1493)
+		// Minimum execution time: 10_638_000 picoseconds.
+		Weight::from_parts(10_638_000, 1493)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -72,7 +73,7 @@ impl<T: frame_system::Config> pallet_timestamp::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `55`
 		//  Estimated: `0`
-		// Minimum execution time: 6_394_000 picoseconds.
-		Weight::from_parts(6_394_000, 0)
+		// Minimum execution time: 6_364_000 picoseconds.
+		Weight::from_parts(6_364_000, 0)
 	}
 }

@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_transaction_multi_payment.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -63,8 +64,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `1209`
 		//  Estimated: `3493`
-		// Minimum execution time: 33_780_000 picoseconds.
-		Weight::from_parts(33_780_000, 3493)
+		// Minimum execution time: 33_472_000 picoseconds.
+		Weight::from_parts(33_472_000, 3493)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -74,8 +75,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `1240`
 		//  Estimated: `3493`
-		// Minimum execution time: 30_551_000 picoseconds.
-		Weight::from_parts(30_551_000, 3493)
+		// Minimum execution time: 30_468_000 picoseconds.
+		Weight::from_parts(30_468_000, 3493)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -87,8 +88,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `1305`
 		//  Estimated: `3493`
-		// Minimum execution time: 38_314_000 picoseconds.
-		Weight::from_parts(38_314_000, 3493)
+		// Minimum execution time: 39_263_000 picoseconds.
+		Weight::from_parts(39_263_000, 3493)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -100,8 +101,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `3221`
 		//  Estimated: `27510`
-		// Minimum execution time: 104_580_000 picoseconds.
-		Weight::from_parts(104_580_000, 27510)
+		// Minimum execution time: 104_349_000 picoseconds.
+		Weight::from_parts(104_349_000, 27510)
 			.saturating_add(T::DbWeight::get().reads(11_u64))
 	}
 	/// Storage: `AssetRegistry::NextAssetId` (r:1 w:0)
@@ -114,8 +115,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `1313`
 		//  Estimated: `4087`
-		// Minimum execution time: 37_781_000 picoseconds.
-		Weight::from_parts(37_781_000, 4087)
+		// Minimum execution time: 37_677_000 picoseconds.
+		Weight::from_parts(37_677_000, 4087)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -155,8 +156,8 @@ impl<T: frame_system::Config> pallet_transaction_multi_payment::WeightInfo for H
 		// Proof Size summary in bytes:
 		//  Measured:  `4234`
 		//  Estimated: `11322`
-		// Minimum execution time: 289_744_000 picoseconds.
-		Weight::from_parts(289_744_000, 11322)
+		// Minimum execution time: 288_790_000 picoseconds.
+		Weight::from_parts(288_790_000, 11322)
 			.saturating_add(T::DbWeight::get().reads(24_u64))
 			.saturating_add(T::DbWeight::get().writes(6_u64))
 	}

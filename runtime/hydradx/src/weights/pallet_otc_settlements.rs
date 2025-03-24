@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_otc_settlements.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -69,8 +70,8 @@ impl<T: frame_system::Config> pallet_otc_settlements::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `1099`
 		//  Estimated: `6196`
-		// Minimum execution time: 129_160_000 picoseconds.
-		Weight::from_parts(129_160_000, 6196)
+		// Minimum execution time: 133_647_000 picoseconds.
+		Weight::from_parts(133_647_000, 6196)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

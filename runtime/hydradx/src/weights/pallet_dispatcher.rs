@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_dispatcher.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -62,10 +63,10 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 19_202_000 picoseconds.
-		Weight::from_parts(19_113_598, 0)
-			// Standard Error: 94
-			.saturating_add(Weight::from_parts(1_975, 0).saturating_mul(n.into()))
+		// Minimum execution time: 19_274_000 picoseconds.
+		Weight::from_parts(20_392_019, 0)
+			// Standard Error: 165
+			.saturating_add(Weight::from_parts(1_729, 0).saturating_mul(n.into()))
 	}
 	/// Storage: `Dispatcher::AaveManagerAccount` (r:1 w:0)
 	/// Proof: `Dispatcher::AaveManagerAccount` (`max_values`: Some(1), `max_size`: Some(32), added: 527, mode: `MaxEncodedLen`)
@@ -74,10 +75,10 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `1517`
-		// Minimum execution time: 23_965_000 picoseconds.
-		Weight::from_parts(24_274_615, 1517)
-			// Standard Error: 58
-			.saturating_add(Weight::from_parts(1_876, 0).saturating_mul(n.into()))
+		// Minimum execution time: 24_011_000 picoseconds.
+		Weight::from_parts(24_184_958, 1517)
+			// Standard Error: 54
+			.saturating_add(Weight::from_parts(1_880, 0).saturating_mul(n.into()))
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 	}
 	/// Storage: `Dispatcher::AaveManagerAccount` (r:0 w:1)
@@ -86,8 +87,8 @@ impl<T: frame_system::Config> pallet_dispatcher::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 6_185_000 picoseconds.
-		Weight::from_parts(6_185_000, 0)
+		// Minimum execution time: 5_984_000 picoseconds.
+		Weight::from_parts(5_984_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 }

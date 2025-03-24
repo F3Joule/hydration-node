@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_evm_accounts.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -73,8 +74,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `578`
 		//  Estimated: `4087`
-		// Minimum execution time: 46_924_000 picoseconds.
-		Weight::from_parts(46_924_000, 4087)
+		// Minimum execution time: 48_802_000 picoseconds.
+		Weight::from_parts(48_802_000, 4087)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -84,8 +85,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 14_564_000 picoseconds.
-		Weight::from_parts(14_564_000, 0)
+		// Minimum execution time: 14_755_000 picoseconds.
+		Weight::from_parts(14_755_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `EVMAccounts::ContractDeployer` (r:0 w:1)
@@ -94,8 +95,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 12_016_000 picoseconds.
-		Weight::from_parts(12_016_000, 0)
+		// Minimum execution time: 12_174_000 picoseconds.
+		Weight::from_parts(12_174_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `EVMAccounts::ContractDeployer` (r:0 w:1)
@@ -104,8 +105,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 11_935_000 picoseconds.
-		Weight::from_parts(11_935_000, 0)
+		// Minimum execution time: 12_215_000 picoseconds.
+		Weight::from_parts(12_215_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `EVMAccounts::ApprovedContract` (r:0 w:1)
@@ -114,8 +115,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 14_111_000 picoseconds.
-		Weight::from_parts(14_111_000, 0)
+		// Minimum execution time: 14_938_000 picoseconds.
+		Weight::from_parts(14_938_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `EVMAccounts::ApprovedContract` (r:0 w:1)
@@ -124,8 +125,8 @@ impl<T: frame_system::Config> pallet_evm_accounts::WeightInfo for HydraWeight<T>
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 11_958_000 picoseconds.
-		Weight::from_parts(11_958_000, 0)
+		// Minimum execution time: 12_316_000 picoseconds.
+		Weight::from_parts(12_316_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 }

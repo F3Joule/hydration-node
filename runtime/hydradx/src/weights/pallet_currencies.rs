@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_currencies.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -81,8 +82,8 @@ impl<T: frame_system::Config> pallet_currencies::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `6621`
 		//  Estimated: `12561`
-		// Minimum execution time: 181_466_000 picoseconds.
-		Weight::from_parts(181_466_000, 12561)
+		// Minimum execution time: 181_996_000 picoseconds.
+		Weight::from_parts(181_996_000, 12561)
 			.saturating_add(T::DbWeight::get().reads(12_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -92,8 +93,8 @@ impl<T: frame_system::Config> pallet_currencies::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1638`
 		//  Estimated: `3593`
-		// Minimum execution time: 89_253_000 picoseconds.
-		Weight::from_parts(89_253_000, 3593)
+		// Minimum execution time: 89_802_000 picoseconds.
+		Weight::from_parts(89_802_000, 3593)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -115,8 +116,8 @@ impl<T: frame_system::Config> pallet_currencies::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2275`
 		//  Estimated: `3593`
-		// Minimum execution time: 89_244_000 picoseconds.
-		Weight::from_parts(89_244_000, 3593)
+		// Minimum execution time: 90_408_000 picoseconds.
+		Weight::from_parts(90_408_000, 3593)
 			.saturating_add(T::DbWeight::get().reads(7_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -126,8 +127,8 @@ impl<T: frame_system::Config> pallet_currencies::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1498`
 		//  Estimated: `3593`
-		// Minimum execution time: 58_960_000 picoseconds.
-		Weight::from_parts(58_960_000, 3593)
+		// Minimum execution time: 58_820_000 picoseconds.
+		Weight::from_parts(58_820_000, 3593)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -137,8 +138,8 @@ impl<T: frame_system::Config> pallet_currencies::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1586`
 		//  Estimated: `3593`
-		// Minimum execution time: 58_261_000 picoseconds.
-		Weight::from_parts(58_261_000, 3593)
+		// Minimum execution time: 59_060_000 picoseconds.
+		Weight::from_parts(59_060_000, 3593)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

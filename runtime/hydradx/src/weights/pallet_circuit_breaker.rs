@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_circuit_breaker.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -63,33 +64,33 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `80 + m * (113 ±0) + n * (56 ±0)`
 		//  Estimated: `0`
-		// Minimum execution time: 387_421_000 picoseconds.
-		Weight::from_parts(387_421_000, 0)
-			// Standard Error: 72_045
-			.saturating_add(Weight::from_parts(353_163, 0).saturating_mul(n.into()))
-			// Standard Error: 72_045
-			.saturating_add(Weight::from_parts(1_307_154, 0).saturating_mul(m.into()))
+		// Minimum execution time: 385_668_000 picoseconds.
+		Weight::from_parts(385_668_000, 0)
+			// Standard Error: 69_987
+			.saturating_add(Weight::from_parts(351_111, 0).saturating_mul(n.into()))
+			// Standard Error: 69_987
+			.saturating_add(Weight::from_parts(1_268_441, 0).saturating_mul(m.into()))
 	}
 	fn on_finalize_single_liquidity_limit_entry() -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `208`
 		//  Estimated: `0`
-		// Minimum execution time: 9_548_000 picoseconds.
-		Weight::from_parts(9_548_000, 0)
+		// Minimum execution time: 9_824_000 picoseconds.
+		Weight::from_parts(9_824_000, 0)
 	}
 	fn on_finalize_single_trade_limit_entry() -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `208`
 		//  Estimated: `0`
-		// Minimum execution time: 9_557_000 picoseconds.
-		Weight::from_parts(9_557_000, 0)
+		// Minimum execution time: 9_604_000 picoseconds.
+		Weight::from_parts(9_604_000, 0)
 	}
 	fn on_finalize_empty() -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `208`
 		//  Estimated: `0`
-		// Minimum execution time: 9_616_000 picoseconds.
-		Weight::from_parts(9_616_000, 0)
+		// Minimum execution time: 9_494_000 picoseconds.
+		Weight::from_parts(9_494_000, 0)
 	}
 	/// Storage: `CircuitBreaker::TradeVolumeLimitPerAsset` (r:0 w:1)
 	/// Proof: `CircuitBreaker::TradeVolumeLimitPerAsset` (`max_values`: None, `max_size`: Some(28), added: 2503, mode: `MaxEncodedLen`)
@@ -97,8 +98,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 14_326_000 picoseconds.
-		Weight::from_parts(14_326_000, 0)
+		// Minimum execution time: 14_238_000 picoseconds.
+		Weight::from_parts(14_238_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `CircuitBreaker::LiquidityAddLimitPerAsset` (r:0 w:1)
@@ -107,8 +108,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 14_197_000 picoseconds.
-		Weight::from_parts(14_197_000, 0)
+		// Minimum execution time: 14_224_000 picoseconds.
+		Weight::from_parts(14_224_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `CircuitBreaker::LiquidityRemoveLimitPerAsset` (r:0 w:1)
@@ -117,8 +118,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 13_891_000 picoseconds.
-		Weight::from_parts(13_891_000, 0)
+		// Minimum execution time: 14_238_000 picoseconds.
+		Weight::from_parts(14_238_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `CircuitBreaker::LiquidityAddLimitPerAsset` (r:1 w:0)
@@ -133,8 +134,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `262`
 		//  Estimated: `3517`
-		// Minimum execution time: 24_574_000 picoseconds.
-		Weight::from_parts(24_574_000, 3517)
+		// Minimum execution time: 24_856_000 picoseconds.
+		Weight::from_parts(24_856_000, 3517)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -150,8 +151,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `208`
 		//  Estimated: `3517`
-		// Minimum execution time: 22_127_000 picoseconds.
-		Weight::from_parts(22_127_000, 3517)
+		// Minimum execution time: 22_562_000 picoseconds.
+		Weight::from_parts(22_562_000, 3517)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -163,8 +164,8 @@ impl<T: frame_system::Config> pallet_circuit_breaker::WeightInfo for HydraWeight
 		// Proof Size summary in bytes:
 		//  Measured:  `208`
 		//  Estimated: `6076`
-		// Minimum execution time: 21_836_000 picoseconds.
-		Weight::from_parts(21_836_000, 6076)
+		// Minimum execution time: 22_371_000 picoseconds.
+		Weight::from_parts(22_371_000, 6076)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}

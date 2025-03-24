@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_duster.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -79,8 +80,8 @@ impl<T: frame_system::Config> pallet_duster::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2960`
 		//  Estimated: `6156`
-		// Minimum execution time: 120_077_000 picoseconds.
-		Weight::from_parts(120_077_000, 6156)
+		// Minimum execution time: 115_192_000 picoseconds.
+		Weight::from_parts(115_192_000, 6156)
 			.saturating_add(T::DbWeight::get().reads(9_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -90,8 +91,8 @@ impl<T: frame_system::Config> pallet_duster::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1012`
 		//  Estimated: `0`
-		// Minimum execution time: 27_230_000 picoseconds.
-		Weight::from_parts(27_230_000, 0)
+		// Minimum execution time: 26_666_000 picoseconds.
+		Weight::from_parts(26_666_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `Duster::AccountBlacklist` (r:1 w:1)
@@ -100,8 +101,8 @@ impl<T: frame_system::Config> pallet_duster::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `1399`
 		//  Estimated: `3513`
-		// Minimum execution time: 33_136_000 picoseconds.
-		Weight::from_parts(33_136_000, 3513)
+		// Minimum execution time: 32_253_000 picoseconds.
+		Weight::from_parts(32_253_000, 3513)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}

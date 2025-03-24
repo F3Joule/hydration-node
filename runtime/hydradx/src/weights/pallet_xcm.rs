@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/pallet_xcm.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -67,8 +68,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `109`
 		//  Estimated: `3574`
-		// Minimum execution time: 42_554_000 picoseconds.
-		Weight::from_parts(42_554_000, 3574)
+		// Minimum execution time: 41_439_000 picoseconds.
+		Weight::from_parts(41_439_000, 3574)
 			.saturating_add(T::DbWeight::get().reads(3_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -101,8 +102,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `500`
 		//  Estimated: `3965`
-		// Minimum execution time: 156_881_000 picoseconds.
-		Weight::from_parts(156_881_000, 3965)
+		// Minimum execution time: 155_712_000 picoseconds.
+		Weight::from_parts(155_712_000, 3965)
 			.saturating_add(T::DbWeight::get().reads(7_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -126,8 +127,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `500`
 		//  Estimated: `3965`
-		// Minimum execution time: 151_509_000 picoseconds.
-		Weight::from_parts(151_509_000, 3965)
+		// Minimum execution time: 150_409_000 picoseconds.
+		Weight::from_parts(150_409_000, 3965)
 			.saturating_add(T::DbWeight::get().reads(7_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -139,8 +140,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1489`
-		// Minimum execution time: 30_882_000 picoseconds.
-		Weight::from_parts(30_882_000, 1489)
+		// Minimum execution time: 30_656_000 picoseconds.
+		Weight::from_parts(30_656_000, 1489)
 			.saturating_add(T::DbWeight::get().reads(2_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -150,16 +151,16 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 13_938_000 picoseconds.
-		Weight::from_parts(13_938_000, 0)
+		// Minimum execution time: 14_022_000 picoseconds.
+		Weight::from_parts(14_022_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	fn force_default_xcm_version() -> Weight {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 5_653_000 picoseconds.
-		Weight::from_parts(5_653_000, 0)
+		// Minimum execution time: 5_900_000 picoseconds.
+		Weight::from_parts(5_900_000, 0)
 	}
 	/// Storage: `PolkadotXcm::VersionNotifiers` (r:1 w:1)
 	/// Proof: `PolkadotXcm::VersionNotifiers` (`max_values`: None, `max_size`: None, mode: `Measured`)
@@ -177,8 +178,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `109`
 		//  Estimated: `3574`
-		// Minimum execution time: 51_346_000 picoseconds.
-		Weight::from_parts(51_346_000, 3574)
+		// Minimum execution time: 51_418_000 picoseconds.
+		Weight::from_parts(51_418_000, 3574)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(4_u64))
 	}
@@ -196,8 +197,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `203`
 		//  Estimated: `3668`
-		// Minimum execution time: 44_164_000 picoseconds.
-		Weight::from_parts(44_164_000, 3668)
+		// Minimum execution time: 44_697_000 picoseconds.
+		Weight::from_parts(44_697_000, 3668)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -207,8 +208,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `0`
-		// Minimum execution time: 5_763_000 picoseconds.
-		Weight::from_parts(5_763_000, 0)
+		// Minimum execution time: 5_783_000 picoseconds.
+		Weight::from_parts(5_783_000, 0)
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	/// Storage: `PolkadotXcm::SupportedVersion` (r:5 w:2)
@@ -217,8 +218,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `22`
 		//  Estimated: `13387`
-		// Minimum execution time: 29_551_000 picoseconds.
-		Weight::from_parts(29_551_000, 13387)
+		// Minimum execution time: 29_925_000 picoseconds.
+		Weight::from_parts(29_925_000, 13387)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -228,8 +229,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `26`
 		//  Estimated: `13391`
-		// Minimum execution time: 30_601_000 picoseconds.
-		Weight::from_parts(30_601_000, 13391)
+		// Minimum execution time: 29_240_000 picoseconds.
+		Weight::from_parts(29_240_000, 13391)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -239,8 +240,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `75`
 		//  Estimated: `15915`
-		// Minimum execution time: 31_266_000 picoseconds.
-		Weight::from_parts(31_266_000, 15915)
+		// Minimum execution time: 30_952_000 picoseconds.
+		Weight::from_parts(30_952_000, 15915)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 	}
 	/// Storage: `PolkadotXcm::VersionNotifyTargets` (r:2 w:1)
@@ -255,8 +256,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `6082`
-		// Minimum execution time: 48_744_000 picoseconds.
-		Weight::from_parts(48_744_000, 6082)
+		// Minimum execution time: 80_301_000 picoseconds.
+		Weight::from_parts(80_301_000, 6082)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -266,8 +267,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `36`
 		//  Estimated: `10926`
-		// Minimum execution time: 19_918_000 picoseconds.
-		Weight::from_parts(19_918_000, 10926)
+		// Minimum execution time: 19_749_000 picoseconds.
+		Weight::from_parts(19_749_000, 10926)
 			.saturating_add(T::DbWeight::get().reads(4_u64))
 	}
 	/// Storage: `PolkadotXcm::VersionNotifyTargets` (r:5 w:2)
@@ -276,8 +277,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `33`
 		//  Estimated: `13398`
-		// Minimum execution time: 30_367_000 picoseconds.
-		Weight::from_parts(30_367_000, 13398)
+		// Minimum execution time: 30_398_000 picoseconds.
+		Weight::from_parts(30_398_000, 13398)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -293,8 +294,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `142`
 		//  Estimated: `13507`
-		// Minimum execution time: 61_538_000 picoseconds.
-		Weight::from_parts(61_538_000, 13507)
+		// Minimum execution time: 61_080_000 picoseconds.
+		Weight::from_parts(61_080_000, 13507)
 			.saturating_add(T::DbWeight::get().reads(8_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
@@ -306,8 +307,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `0`
 		//  Estimated: `1485`
-		// Minimum execution time: 5_818_000 picoseconds.
-		Weight::from_parts(5_818_000, 1485)
+		// Minimum execution time: 5_854_000 picoseconds.
+		Weight::from_parts(5_854_000, 1485)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
@@ -317,8 +318,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `7576`
 		//  Estimated: `11041`
-		// Minimum execution time: 36_661_000 picoseconds.
-		Weight::from_parts(36_661_000, 11041)
+		// Minimum execution time: 36_906_000 picoseconds.
+		Weight::from_parts(36_906_000, 11041)
 			.saturating_add(T::DbWeight::get().reads(1_u64))
 			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
@@ -336,8 +337,8 @@ impl<T: frame_system::Config> pallet_xcm::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `345`
 		//  Estimated: `4087`
-		// Minimum execution time: 69_501_000 picoseconds.
-		Weight::from_parts(69_501_000, 4087)
+		// Minimum execution time: 68_905_000 picoseconds.
+		Weight::from_parts(68_905_000, 4087)
 			.saturating_add(T::DbWeight::get().reads(5_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}

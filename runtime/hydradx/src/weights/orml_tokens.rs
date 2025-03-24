@@ -42,6 +42,7 @@
 // --template=scripts/pallet-weight-template.hbs
 // --output
 // runtime/hydradx/src/weights/orml_tokens.rs
+// --quiet
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
@@ -93,8 +94,8 @@ impl<T: frame_system::Config> orml_tokens::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `4604`
 		//  Estimated: `16488`
-		// Minimum execution time: 407_961_000 picoseconds.
-		Weight::from_parts(407_961_000, 16488)
+		// Minimum execution time: 417_469_000 picoseconds.
+		Weight::from_parts(417_469_000, 16488)
 			.saturating_add(T::DbWeight::get().reads(32_u64))
 			.saturating_add(T::DbWeight::get().writes(11_u64))
 	}
@@ -134,8 +135,8 @@ impl<T: frame_system::Config> orml_tokens::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `4656`
 		//  Estimated: `16488`
-		// Minimum execution time: 410_043_000 picoseconds.
-		Weight::from_parts(410_043_000, 16488)
+		// Minimum execution time: 419_676_000 picoseconds.
+		Weight::from_parts(419_676_000, 16488)
 			.saturating_add(T::DbWeight::get().reads(32_u64))
 			.saturating_add(T::DbWeight::get().writes(11_u64))
 	}
@@ -175,8 +176,8 @@ impl<T: frame_system::Config> orml_tokens::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `4654`
 		//  Estimated: `16488`
-		// Minimum execution time: 337_229_000 picoseconds.
-		Weight::from_parts(337_229_000, 16488)
+		// Minimum execution time: 343_277_000 picoseconds.
+		Weight::from_parts(343_277_000, 16488)
 			.saturating_add(T::DbWeight::get().reads(32_u64))
 			.saturating_add(T::DbWeight::get().writes(10_u64))
 	}
@@ -216,8 +217,8 @@ impl<T: frame_system::Config> orml_tokens::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `4656`
 		//  Estimated: `16488`
-		// Minimum execution time: 408_199_000 picoseconds.
-		Weight::from_parts(408_199_000, 16488)
+		// Minimum execution time: 416_910_000 picoseconds.
+		Weight::from_parts(416_910_000, 16488)
 			.saturating_add(T::DbWeight::get().reads(32_u64))
 			.saturating_add(T::DbWeight::get().writes(11_u64))
 	}
@@ -237,8 +238,8 @@ impl<T: frame_system::Config> orml_tokens::WeightInfo for HydraWeight<T> {
 		// Proof Size summary in bytes:
 		//  Measured:  `2275`
 		//  Estimated: `3593`
-		// Minimum execution time: 79_422_000 picoseconds.
-		Weight::from_parts(79_422_000, 3593)
+		// Minimum execution time: 81_841_000 picoseconds.
+		Weight::from_parts(81_841_000, 3593)
 			.saturating_add(T::DbWeight::get().reads(6_u64))
 			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
