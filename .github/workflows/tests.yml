@@ -55,6 +55,26 @@ jobs:
           name: hydradx-bencher
           path: hydradx-bencher.zip
 
+      - name: Close temporary pull request if needed
+        if: startsWith(github.ref_name, 'temp-ci/')
+        run: |
+          PR_NUMBER=$(curl -s \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ github.ref_name }}&state=open \
+            | grep -m 1 '"number":' | sed 's/[^0-9]*//g')
+
+          if [[ "$PR_NUMBER" != "null" ]]; then
+            curl -X PATCH \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER \
+              -d '{"state":"closed"}'
+          fi
+
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git \
+            --delete ${{ github.ref_name }}
+
 
   benchmark-check:
     runs-on: toad
@@ -62,7 +82,6 @@ jobs:
     needs: build
     permissions:
       pull-requests: write
-      actions: write
       contents: write
     steps:
       - uses: actions/checkout@v2
@@ -88,14 +107,16 @@ jobs:
           echo "pr_number=$pr_number" >> $GITHUB_OUTPUT
           
           if [[ -z "$pr_number" ]]; then
-            pr_number=$(curl -s \
+            pr_data=$(curl -s \
               -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ github.head_ref }}&state=open" | \
-              grep '"number":' | \
-              sed 's/[^0-9]*//g' | \
-              head -n 1
+              "https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ github.head_ref }}&state=open"
             )
+          
+            pr_number=$(echo "$pr_data" | grep '"number":' | sed 's/[^0-9]*//g' | head -n 1)
             echo "pr_number=$pr_number" >> $GITHUB_OUTPUT
+          
+            pr_base_ref=$(echo "$pr_data" | grep "base" -A2 | grep -o '"ref": "[^"]*"' | head -n 1 | sed 's/"ref": "//; s/"//g')
+            echo "pr_base_ref=$pr_base_ref" >> $GITHUB_OUTPUT
           
             if [[ -z "$pr_number" ]]; then
               echo "Warning: Could not determine PR number from either event context or API" >&2
@@ -149,17 +170,23 @@ jobs:
 
           # Push to the branch that triggered the workflow
           git push "${repo_url}" HEAD:${{ github.ref_name }}
+          git push "${repo_url}" HEAD:refs/heads/temp-ci/${{ github.run_id }}
 
           echo "Successfully pushed benchmark results to branch ${{ github.head_ref || github.ref_name }}"
 
-      - name: Trigger tests workflow for weights commit
-        if: steps.commit-weights.outcome == 'success'
-        run: |
-          curl -X POST \
+      - name: Create temporary pull request for checks to run
+        if: steps.commit-weights.outcome == 'success' && steps.prepare.outputs.pr_base_ref != ''
+        run: |          
+          curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/tests.yml/dispatches \
-            -d '{"ref":"${{ github.ref_name }}"}'
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d '{
+              "title": "ci(do not merge): temporary pull request for status checks",
+              "head": "temp-ci/${{ github.run_id }}",
+              "base": "${{ steps.prepare.outputs.pr_base_ref }}",
+              "body": "This PR is automatically created to trigger CI on a commit pushed within a benchmarking workflow."
+            }'
 
       - name: Comment benchmark results to the pull request
         if: github.event_name == 'pull_request'
