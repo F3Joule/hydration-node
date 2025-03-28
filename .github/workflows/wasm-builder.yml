@@ -21,7 +21,7 @@ permissions:
 jobs:
   build-release:
     name: Build and publish hydradx runtime
-    runs-on: lark
+    runs-on: lark-test
     steps:
       - name: Fix leftovers permissions
         run: |
